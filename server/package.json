@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx tsc -p tsconfig.build.json",
     "start": "node build/src/server.js",
-    "dev": "npx nodemon ./src/server.ts"
+    "dev": "nodemon --exec node --loader ts-node/esm src/server.ts"
   },
   "keywords": [],
   "author": "",

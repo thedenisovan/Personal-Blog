@@ -1,17 +1,6 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "noEmit": false,
-    "allowImportingTsExtensions": false,
-    "outDir": "build/src",
-    "rootDir": "src",
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-    "module": "ESNext",
-    "target": "ES2022",
-    "moduleResolution": "Node"
-  },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "build"]
+    "noEmit": false
+  }
 }
