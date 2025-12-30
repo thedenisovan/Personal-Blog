@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node ./build/server.js",
+    "build": "npx tsc -p tsconfig.build.json",
+    "start": "node build/src/server.js",
     "dev": "npx nodemon ./src/server.ts"
   },
   "keywords": [],
