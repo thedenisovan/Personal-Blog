@@ -4,7 +4,7 @@ const about = Router();
 
 about.get('/', (req, res) => {
   res.json({
-    greeting: 'this is about page!',
+    greeting: 'this is about page',
   });
 });
 

@@ -1,7 +1,7 @@
-import hero from './hero.js';
+import home from './ home.js';
 import about from './about.js';
 import login from './login.js';
 import signup from './signup.js';
 import category from './category.js';
 
-export { hero, about, login, signup, category };
+export { home, about, login, signup, category };

@@ -1,9 +1,9 @@
 import express from 'express';
-import { hero, about, login, signup, category } from './routes/index.js';
+import { home, about, login, signup, category } from './routes/routes.js';
 
 const app = express();
 
-app.use('/', hero);
+app.use('/', home);
 app.use('/about', about);
 app.use('/login', login);
 app.use('/signup', signup);
