@@ -1,11 +1,11 @@
 import express from 'express';
-import { home, about, login, signup, category } from './routes/routes.js';
+import { home, about, signin, signup, category } from './routes/routes.js';
 
 const app = express();
 
 app.use('/', home);
 app.use('/about', about);
-app.use('/login', login);
+app.use('/signin', signin);
 app.use('/signup', signup);
 app.use('/category', category);
 

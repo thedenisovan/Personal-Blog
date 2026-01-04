@@ -8,4 +8,6 @@ signup.get('/', (req, res) => {
   });
 });
 
+signup.post('/', (req, res) => {});
+
 export default signup;

@@ -4,6 +4,8 @@ import bcrypt from 'bcryptjs';
 
 const signinValidator = [
   body('username').custom(async (value, { req }) => {
+    if (!value) throw new Error('Username field must not be empty.');
+
     const user = await prisma.user.findUnique({ where: { username: value } });
 
     if (!user) throw new Error('No user with given username exists.');
