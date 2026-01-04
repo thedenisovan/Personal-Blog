@@ -11,18 +11,14 @@ const signupValidator = [
     .isAlphanumeric()
     .withMessage('Username must contain only alpha numeric characters.')
     .custom(async (value) => {
-      const user = await prisma.user.findUnique({
-        where: {
-          username: value,
-        },
-      });
+      const user = await prisma.user.findUnique({ where: { username: value } });
       if (user) throw new Error('Username already in use.');
     }),
   body('password')
     .trim()
     .notEmpty()
     .withMessage('Password must not be empty')
-    .matches(/^(?=.*[A-Z])(?=.*\d).{6,}$/)
+    .matches(/^(?=.*[A-Z])(?=.*\d).{6,60}$/)
     .withMessage('Password must be 6+ chars with uppercase and number.'),
   body('passwordConfirmation')
     .trim()
