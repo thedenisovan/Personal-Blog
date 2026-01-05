@@ -1,11 +1,11 @@
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 import { Router } from 'express';
 import signinResult from '../validators/signin.validator';
 import validatorMiddleware from '../middleware/signinResult';
 
 const login = Router();
 
-login.get(
+login.post(
   '/',
   signinResult,
   validatorMiddleware,
