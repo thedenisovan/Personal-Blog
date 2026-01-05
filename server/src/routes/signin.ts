@@ -1,17 +1,17 @@
 import type { Request, Response } from 'express';
 import { Router } from 'express';
-import signinResult from '../validators/signin.validator';
-import validatorMiddleware from '../middleware/signinResult';
+import signinValidator from '../validators/signin.validator.js';
+import validatorResult from '../validators/validatorResult.js';
 
 const login = Router();
 
 login.post(
   '/',
-  signinResult,
-  validatorMiddleware,
+  signinValidator,
+  validatorResult,
   (req: Request, res: Response) => {
     res.json({
-      greeting: 'this is login page!',
+      greeting: 'this is signin page!',
     });
   }
 );

@@ -1,15 +1,15 @@
 import { Router } from 'express';
-import signupValidator from '../validators/signup.validator';
-import signupResult from '../middleware/signupResult';
+import signupValidator from '../validators/signup.validator.js';
+import validatorResult from '../validators/validatorResult.js';
 import type { Request, Response } from 'express';
-import signupUser from '../middleware/signupUser';
+import signupUser from '../middleware/signupUser.js';
 
 const signup = Router();
 
 signup.post(
   '/',
   signupValidator,
-  signupResult,
+  validatorResult,
   signupUser,
   (req: Request, res: Response) => {
     res.json({
