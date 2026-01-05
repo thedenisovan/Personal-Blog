@@ -1,25 +1,24 @@
 import type { Request, Response } from 'express';
 import { prisma } from '../../lib/prisma.js';
 
-// gets single post based on it's id
 export default async function getPostData(req: Request, res: Response) {
-  const post = await prisma.post.findUnique({
-    where: {
-      id: +req.params.postId!,
-    },
-  });
+  const postId = parseInt(req.params.postId!, 10);
+  if (isNaN(postId))
+    return res.status(400).json({ message: 'Invalid post ID' });
 
-  const comments = await prisma.comment.findMany({
-    where: {
-      postId: +req.params.postId!,
-    },
-  });
+  try {
+    const post = await prisma.post.findUnique({
+      where: { id: postId },
+    });
 
-  if (post) {
+    if (!post) return res.status(404).json({ message: 'Post not found' });
+
+    const comments = await prisma.comment.findMany({
+      where: { postId },
+    });
+
     return res.json({ post, comments });
+  } catch {
+    res.sendStatus(500);
   }
-
-  res.json({
-    message: 'no posts found',
-  });
 }
