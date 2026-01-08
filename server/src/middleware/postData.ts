@@ -10,9 +10,7 @@ async function getPostData(req: Request, res: Response) {
   try {
     const post = await prisma.post.findUnique({
       where: {
-        AND: {
-          published: true,
-        },
+        published: true,
         id: postId,
       },
     });

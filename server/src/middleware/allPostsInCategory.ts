@@ -19,6 +19,7 @@ export default async function getPostsByCategory(req: Request, res: Response) {
 
     const posts = await prisma.post.findMany({
       where: {
+        published: true,
         categoryId: category.id,
       },
     });
