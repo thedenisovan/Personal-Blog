@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import getPostData from '../middleware/postData';
+import { getPostData } from '../middleware/postData';
 import newComment from '../middleware/newComment';
 
 const post = Router();

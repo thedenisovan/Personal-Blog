@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import { prisma } from '../../lib/prisma.js';
 
-export default async function getPostData(req: Request, res: Response) {
+async function getPostData(req: Request, res: Response) {
   const postId = parseInt(req.params.postId!, 10);
   if (isNaN(postId))
     return res.status(400).json({ message: 'Invalid post ID' });
@@ -22,3 +22,7 @@ export default async function getPostData(req: Request, res: Response) {
     res.sendStatus(500);
   }
 }
+
+async function getAllPosts(req: Request, res: Response) {}
+
+export { getPostData };
