@@ -1,11 +1,8 @@
 import { Router } from 'express';
+import { getAllPublishedPosts } from '../middleware/postData.js';
 
 const home = Router();
 
-home.get('/', async (req, res) => {
-  res.json({
-    greeting: 'home page',
-  });
-});
+home.get('/', getAllPublishedPosts);
 
 export default home;
