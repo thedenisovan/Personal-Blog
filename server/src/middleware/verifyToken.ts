@@ -1,4 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
+import 'dotenv/config';
 
 export default function verifyToken(
   req: Request,
@@ -7,13 +9,14 @@ export default function verifyToken(
 ) {
   const bearerHeader = req.headers['authorization'];
 
-  if (typeof bearerHeader !== 'undefined') {
-    const bearer = bearerHeader.split(' ');
-    const bearerToken = bearer[1]; // Get token from array
+  if (typeof bearerHeader === 'undefined') return res.sendStatus(401);
 
-    req.token = bearerToken;
+  const token = bearerHeader.split(' ')[1];
+
+  jwt.verify(token!, process.env.ACCESS_TOKEN_SECRET!, (err, token) => {
+    if (err) return res.sendStatus(403);
+    req.token = token as string;
+
     next();
-  } else {
-    res.sendStatus(403);
-  }
+  });
 }
