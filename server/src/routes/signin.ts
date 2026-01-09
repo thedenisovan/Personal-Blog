@@ -1,19 +1,10 @@
-import type { Request, Response } from 'express';
 import { Router } from 'express';
 import signinValidator from '../validators/signin.validator.js';
 import validatorResult from '../validators/validatorResult.js';
+import jwtSign from '../middleware/jwtSign.js';
 
 const login = Router();
 
-login.post(
-  '/',
-  signinValidator,
-  validatorResult,
-  (req: Request, res: Response) => {
-    res.json({
-      greeting: 'this is signin page!',
-    });
-  }
-);
+login.post('/', signinValidator, validatorResult, jwtSign);
 
 export default login;
