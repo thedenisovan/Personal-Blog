@@ -36,7 +36,11 @@ async function getAllPublishedPosts(req: Request, res: Response) {
       },
     });
 
-    if (!publishedPost) return res.status(200).json({ message: 'No posts.' });
+    if (!publishedPost.length) {
+      return res.status(200).json({ message: 'No posts.' });
+    } else {
+      return res.status(200).json({ publishedPost });
+    }
   } catch {
     res.sendStatus(500);
   }
