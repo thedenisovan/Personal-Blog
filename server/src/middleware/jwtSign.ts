@@ -1,9 +1,14 @@
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
 import type { Request, Response } from 'express';
+import { prisma } from '../../lib/prisma';
 
 export default async function jwtSign(req: Request, res: Response) {
-  let user = req.user;
+  let user = await prisma.user.findUnique({
+    where: {
+      username: req.body.username,
+    },
+  });
 
   if (!user)
     return res
@@ -11,7 +16,7 @@ export default async function jwtSign(req: Request, res: Response) {
       .json({ message: 'Could not extract user from request obj.' });
 
   jwt.sign(
-    { userId: user.id, username: user.username, role: user.role },
+    user,
     process.env.ACCESS_TOKEN_SECRET as string,
     (err: Error | null, token?: string) => {
       if (err || !token) {

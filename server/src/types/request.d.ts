@@ -1,7 +1,7 @@
 declare global {
   namespace Express {
     interface Request {
-      token?: string | null;
+      token?: { role: string };
       user?: {
         id: number;
         username: string;
