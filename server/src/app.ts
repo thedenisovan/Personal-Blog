@@ -10,6 +10,7 @@ import {
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true })); // for forms
 
 app.use('/', home);
 app.use('/about', about);
