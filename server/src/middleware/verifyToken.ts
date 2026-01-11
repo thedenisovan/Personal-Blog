@@ -1,7 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import 'dotenv/config';
-import type { Role } from '../../generated/prisma/enums';
 
 export default function verifyToken(
   req: Request,
