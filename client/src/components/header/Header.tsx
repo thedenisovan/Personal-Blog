@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+
 export default function Header() {
   return (
     <header className='border-b-2'>
@@ -6,10 +8,10 @@ export default function Header() {
           <h1>Dainis Dilevka</h1>
         </li>
         <li>
-          <a href='/'>Home</a>
+          <Link to='/'>Home</Link>
         </li>
         <li>
-          <a href='about'>About</a>
+          <Link to='/about'>About</Link>
         </li>
         <li>
           <button>More</button>
