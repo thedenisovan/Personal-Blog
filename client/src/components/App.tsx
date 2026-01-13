@@ -8,7 +8,7 @@ export default function App() {
   const toggleTheme = () => setTheme(!theme);
 
   return (
-    <div className={`${theme ? 'dark' : ''}`}>
+    <div className={`${theme ? 'dark' : ''} h-screen`}>
       <Header toggleTheme={toggleTheme} />
       <Outlet />
     </div>

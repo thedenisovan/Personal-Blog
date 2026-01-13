@@ -9,10 +9,11 @@ export default function Header({ toggleTheme }: { toggleTheme: () => void }) {
   const toggleDrawer = () => setDrawerState(!drawerState);
 
   return (
-    <header className='border-b-2 relative dark:bg-slate-800 dark:text-white'>
-      <ul className='flex justify-between items-center p-1! dark:p-2!'>
-        <li className='max-w-15'>
-          <h1 className='text-center font-medium'>Dainis Dilevka</h1>
+    <header className='relative dark:bg-slate-800 dark:text-white'>
+      <ul className='flex justify-between items-center px-2 py-2! dark:p-3!'>
+        <li>
+          <h2 className='text-center font-medium text-xl'>Dainis</h2>
+          <h2 className='text-center font-medium text-xl'>Dilevka</h2>
         </li>
         <li className='hidden'>
           <Link to='/'>Articles</Link>
