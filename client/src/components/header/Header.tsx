@@ -10,12 +10,12 @@ export default function Header({ toggleTheme }: { toggleTheme: () => void }) {
 
   return (
     <header className='border-b-2 relative dark:bg-slate-800 dark:text-white'>
-      <ul className='flex justify-between items-center mx-3!'>
+      <ul className='flex justify-between items-center p-1! dark:p-2!'>
         <li className='max-w-15'>
           <h1 className='text-center font-medium'>Dainis Dilevka</h1>
         </li>
         <li className='hidden'>
-          <Link to='/'>Home</Link>
+          <Link to='/'>Articles</Link>
         </li>
         <li className='hidden'>
           <Link to='/about'>About</Link>
@@ -32,7 +32,7 @@ export default function Header({ toggleTheme }: { toggleTheme: () => void }) {
               width={35}
               src={svgObject.moreWhite}
               alt='three vertical dots'
-              className='dark:block!'
+              className='hidden! dark:block!'
             />
           </button>
         </li>
