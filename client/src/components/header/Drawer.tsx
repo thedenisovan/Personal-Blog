@@ -1,6 +1,5 @@
 import { Link } from 'react-router';
 import svgObject from '../../utils/svgObject';
-import Logo from '../minorComponents/Logo';
 
 export default function Drawer({
   toggleDrawer,
@@ -13,12 +12,17 @@ export default function Drawer({
 }) {
   return (
     <aside
-      className={`absolute top-0 w-screen h-screen flex  transition-transform duration-500 ease-out
+      className={`z-1 absolute top-0 w-screen h-screen flex  transition-transform duration-500 ease-out
           ${drawerState ? '-translate-x-100' : ''}`}
     >
       <nav className='dark:text-white text-gray-800 dark:bg-slate-800 w-80 bg-white p-3 overflow-hidden'>
         <div className='flex gap-3 items-center pt-3 pb-6'>
-          <Logo size={'11'} />
+          {/* LOGO COMPONENT */}
+          <div
+            className={` flex items-center justify-center rounded-full bg-linear-to-br from-blue-500 to-purple-600 p-2 text-white font-bold`}
+          >
+            DD
+          </div>
           <h2 className='font-medium text-2xl'>Dainis Dilevka</h2>
         </div>
         <ul>

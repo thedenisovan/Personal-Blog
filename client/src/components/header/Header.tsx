@@ -9,7 +9,7 @@ export default function Header({ toggleTheme }: { toggleTheme: () => void }) {
   const toggleDrawer = () => setDrawerState(!drawerState);
 
   return (
-    <header className='relative dark:bg-slate-800 dark:text-white'>
+    <header className='relative dark:bg-slate-800 dark:border-slate-700 bg-white border-b border-gray-200 dark:text-white'>
       <ul className='flex justify-between items-center px-2 py-2! dark:p-3!'>
         <li>
           <h2 className='text-center font-medium text-xl'>Dainis</h2>
