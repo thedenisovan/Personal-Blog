@@ -6,16 +6,17 @@ export default function AboutPage() {
           DD
         </div>
         <section className='animate-translate-up'>
-          <h2 className='  text-gray-900 font-bold dark:text-white text-5xl text-center mb-6!'>
+          <h2 className='text-gray-900 font-bold dark:text-white text-5xl text-center mb-6!'>
             Hi, I'm{' '}
             <span className='bg-linear-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent'>
               Dainis Dilevka{' '}
             </span>{' '}
             &#128075;
           </h2>
-          <p className='dark:text-white text-center'>
-            I'm a passionate web developer and creative thinker who loves
-            building beautiful, functional experiences on the web.
+          <p className='text-center text-xl text-gray-600 dark:text-gray-100 leading-relaxed max-w-2xl'>
+            I'm a passionate self-taught web developer and philosophical thinker
+            &#128517; who loves building beautiful, functional experiences on
+            the web.
           </p>
         </section>
       </header>
