@@ -2,7 +2,7 @@ import svgObject from '../../../utils/svgObject';
 
 export default function Location() {
   return (
-    <div className='group dark:text-gray-200 dark:bg-slate-800 border-slate-700 border rounded-2xl p-8 shadow-sm'>
+    <div className='group hover:shadow-xl dark:border-slate-700 transition-all dark:text-gray-200 dark:bg-slate-800 border-slate-300 border rounded-2xl p-8 shadow-sm'>
       <header className='flex items-center gap-3 mb-4!'>
         <div className='group-hover:scale-120 transition-transform duration-300 dark:bg-blue-900/30 bg-blue-100 rounded-lg flex items-center justify-center w-12 h-12'>
           <img

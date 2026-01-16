@@ -12,9 +12,19 @@ import lightLocation from '../assets/svg-repo/location-light.svg';
 import darkLocation from '../assets/svg-repo/locaiton-dark.svg';
 import embedDark from '..//assets/svg-repo/embed-dark.svg';
 import embedLight from '..//assets/svg-repo/embed-ligth.svg';
+import book from '..//assets/svg-repo/book.svg';
+import cycling from '..//assets/svg-repo/cycling.svg';
+import gamepad from '..//assets/svg-repo/gamepad.svg';
+import code from '..//assets/svg-repo/code.svg';
+import heart from '..//assets/svg-repo/heart.svg';
 
 const svgObject = {
+  book,
+  cycling,
+  gamepad,
+  code,
   aboutBlack,
+  heart,
   aboutWhite,
   moreBlack,
   moreWhite,

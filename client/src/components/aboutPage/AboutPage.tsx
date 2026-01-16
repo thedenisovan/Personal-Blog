@@ -1,6 +1,8 @@
 import text from '../../utils/textObject';
 import Location from './aboutCards/Location';
 import WhatIDo from './aboutCards/WhatIDo';
+import WhatILove from './aboutCards/WhatILove';
+import TechStack from './aboutCards/TechStack';
 
 export default function AboutPage() {
   return (
@@ -24,7 +26,7 @@ export default function AboutPage() {
           </p>
         </section>
         <section className='animate-translate-up grid grid-cols-1 gap-8'>
-          <div className=' dark:text-gray-200 dark:bg-slate-800 border-slate-700 border rounded-2xl p-8 shadow-sm'>
+          <div className='hover:shadow-xl transition-all dark:text-gray-200 dark:bg-slate-800 dark:border-slate-700 border-slate-300 border rounded-2xl p-8 shadow-sm'>
             <h3 className='mb-6! text-2xl font-bold text-gray-900 dark:text-white'>
               My Story
             </h3>
@@ -35,6 +37,8 @@ export default function AboutPage() {
           </div>
           <Location />
           <WhatIDo />
+          <WhatILove />
+          <TechStack />
         </section>
       </header>
     </main>

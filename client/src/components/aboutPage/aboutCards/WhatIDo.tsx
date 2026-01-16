@@ -2,7 +2,7 @@ import svgObject from '../../../utils/svgObject';
 
 export default function WhatIDo() {
   return (
-    <div className='group dark:text-gray-200 dark:bg-slate-800 border-slate-700 border rounded-2xl p-8 shadow-sm'>
+    <div className='hover:shadow-xl group dark:text-gray-200 transition-all dark:border-slate-700 dark:bg-slate-800 border-slate-300 border rounded-2xl p-8 shadow-sm'>
       <header className='flex items-center gap-3 mb-6!'>
         <div className='group-hover:scale-120 transition-transform duration-300 dark:bg-blue-900/30 bg-blue-100 rounded-lg flex items-center justify-center w-12 h-12 '>
           <img
@@ -37,7 +37,7 @@ export default function WhatIDo() {
         />
         <SkillComponent
           bullet='oklch(65.6% 0.241 354.308)'
-          text='Problem Solving'
+          text='Problem Solving & System Thinking'
         />
       </div>
     </div>
