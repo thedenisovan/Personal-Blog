@@ -10,6 +10,8 @@ import aboutWhite from '../assets/svg-repo/about-white.svg';
 import aboutBlack from '../assets/svg-repo/about-black.svg';
 import lightLocation from '../assets/svg-repo/location-light.svg';
 import darkLocation from '../assets/svg-repo/locaiton-dark.svg';
+import embedDark from '..//assets/svg-repo/embed-dark.svg';
+import embedLight from '..//assets/svg-repo/embed-ligth.svg';
 
 const svgObject = {
   aboutBlack,
@@ -24,6 +26,8 @@ const svgObject = {
   latestWhite,
   lightLocation,
   darkLocation,
+  embedDark,
+  embedLight,
 };
 
 export default svgObject;

@@ -9,23 +9,23 @@ export default function Header({ toggleTheme }: { toggleTheme: () => void }) {
   const toggleDrawer = () => setDrawerState(!drawerState);
 
   return (
-    <header className='relative dark:bg-slate-800 dark:border-slate-700 bg-white border-b border-gray-200 dark:text-white'>
+    <header className='sticky z-40 top-0! dark:bg-slate-800 dark:border-slate-700 bg-white border-b border-gray-200 dark:text-white'>
       <ul className='flex justify-between items-center px-2 py-2! dark:p-3!'>
         <li>
           <h2 className='text-center font-medium text-xl'>Dainis</h2>
           <h2 className='text-center font-medium text-xl'>Dilevka</h2>
         </li>
-        <li className='hidden lg:inline'>
+        <li className='hidden md:inline'>
           <Link to='/'>Articles</Link>
         </li>
-        <li className='hidden lg:inline'>
+        <li className='hidden md:inline'>
           <Link to='/about'>About</Link>
         </li>
         <li>
           <button
             onClick={() => toggleDrawer()}
             aria-label='display sidebar'
-            className='lg:hidden'
+            className='md:hidden'
           >
             <img
               width={35}

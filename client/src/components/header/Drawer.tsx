@@ -12,10 +12,10 @@ export default function Drawer({
 }) {
   return (
     <aside
-      className={`z-1 fixed top-0 w-screen h-screen flex transition-transform duration-500 ease-out
+      className={`z-1 fixed h-screen flex transition-transform duration-500 ease-out inset-0
           ${drawerState ? '-translate-x-full ' : ''}`}
     >
-      <nav className='dark:text-white text-gray-800 dark:bg-slate-800 w-80 bg-white p-3 overflow-hidden'>
+      <nav className='dark:text-white text-gray-800 dark:bg-slate-800 w-[80%] bg-white p-3 overflow-hidden'>
         <div className='flex gap-3 items-center pt-3 pb-6'>
           {/* LOGO COMPONENT */}
           <div
@@ -90,7 +90,7 @@ export default function Drawer({
         tabIndex={1}
         role='button'
         onClick={() => toggleDrawer()}
-        className='text-white dark:bg-slate-900 bg-gray-400 w-20'
+        className='text-white dark:bg-slate-900 bg-gray-400 w-[20%]'
       >
         <button className='w-full pt-5' aria-label='collapse sidebar'>
           <img
