@@ -8,6 +8,8 @@ import latestBlack from '../assets/svg-repo/latest-black.svg';
 import latestWhite from '../assets/svg-repo/latest-white.svg';
 import aboutWhite from '../assets/svg-repo/about-white.svg';
 import aboutBlack from '../assets/svg-repo/about-black.svg';
+import lightLocation from '../assets/svg-repo/location-light.svg';
+import darkLocation from '../assets/svg-repo/locaiton-dark.svg';
 
 const svgObject = {
   aboutBlack,
@@ -20,6 +22,8 @@ const svgObject = {
   closeWhite,
   latestBlack,
   latestWhite,
+  lightLocation,
+  darkLocation,
 };
 
 export default svgObject;

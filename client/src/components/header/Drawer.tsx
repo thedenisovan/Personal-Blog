@@ -12,7 +12,7 @@ export default function Drawer({
 }) {
   return (
     <aside
-      className={`z-1 absolute top-0 w-screen h-screen flex  transition-transform duration-500 ease-out
+      className={`z-1 fixed top-0 w-screen h-screen flex  transition-transform duration-500 ease-out
           ${drawerState ? '-translate-x-100' : ''}`}
     >
       <nav className='dark:text-white text-gray-800 dark:bg-slate-800 w-80 bg-white p-3 overflow-hidden'>

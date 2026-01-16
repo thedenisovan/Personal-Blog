@@ -21,16 +21,11 @@
   }
 }
 
-html {
-  height: 100%;
-}
-
 body {
   /* 4. Add accessible line-height */
   line-height: 1.5;
   /* 5. Improve text rendering */
   -webkit-font-smoothing: antialiased;
-  height: 100%;
 }
 
 /* 6. Improve media defaults */
