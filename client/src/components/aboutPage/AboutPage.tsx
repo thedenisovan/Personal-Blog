@@ -3,10 +3,11 @@ import Location from './aboutCards/Location';
 import WhatIDo from './aboutCards/WhatIDo';
 import WhatILove from './aboutCards/WhatILove';
 import TechStack from './aboutCards/TechStack';
+import CallToAction from './aboutCards/CallToAction';
 
 export default function AboutPage() {
   return (
-    <main className='dark:bg-slate-900 bg-gray-100 px-6 py-12'>
+    <main className='dark:bg-slate-900 bg-gray-100 px-6 py-12 max-w-4xl mx-auto!'>
       <header className='flex flex-col items-center justify-center'>
         <div className='mb-8! animate-scale-in z-0 w-32 h-32 text-5xl shadow-2xl flex items-center justify-center rounded-full bg-linear-to-br from-blue-500 to-purple-600 text-white font-bold'>
           DD
@@ -25,7 +26,7 @@ export default function AboutPage() {
             the web.
           </p>
         </section>
-        <section className='animate-translate-up grid grid-cols-1 gap-8'>
+        <section className='animate-translate-up '>
           <div className='hover:shadow-xl transition-all dark:text-gray-200 dark:bg-slate-800 dark:border-slate-700 border-slate-300 border rounded-2xl p-8 shadow-sm'>
             <h3 className='mb-6! text-2xl font-bold text-gray-900 dark:text-white'>
               My Story
@@ -35,10 +36,13 @@ export default function AboutPage() {
             <p>{text.myStory3}</p>
             <p className='pt-6'>{text.myStory4}</p>
           </div>
-          <Location />
-          <WhatIDo />
-          <WhatILove />
-          <TechStack />
+          <section className='grid grid-cols-1 md:grid-cols-2 gap-8 my-16!'>
+            <Location />
+            <WhatIDo />
+            <WhatILove />
+            <TechStack />
+          </section>
+          <CallToAction />
         </section>
       </header>
     </main>

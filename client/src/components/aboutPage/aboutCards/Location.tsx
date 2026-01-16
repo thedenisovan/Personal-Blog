@@ -30,8 +30,8 @@ export default function Location() {
         </div>
       </div>
       <p className='mt-4!'>
-        I’m based in beautiful “Misty Albion,” England, though I originally come
-        from Latvia, so I'm based roughly 1,600 km away from my homeland.
+        Based in beautiful “Misty Albion,” England, though originally I come
+        from Latvia, so roughly 1,600 km away from my homeland.
       </p>
     </div>
   );
