@@ -1,5 +1,5 @@
 import text from '../../utils/textObject';
-import Location from './Location';
+import Location from './aboutCards/Location';
 
 export default function AboutPage() {
   return (

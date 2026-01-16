@@ -15,14 +15,18 @@ export default function Header({ toggleTheme }: { toggleTheme: () => void }) {
           <h2 className='text-center font-medium text-xl'>Dainis</h2>
           <h2 className='text-center font-medium text-xl'>Dilevka</h2>
         </li>
-        <li className='hidden'>
+        <li className='hidden lg:inline'>
           <Link to='/'>Articles</Link>
         </li>
-        <li className='hidden'>
+        <li className='hidden lg:inline'>
           <Link to='/about'>About</Link>
         </li>
         <li>
-          <button onClick={() => toggleDrawer()} aria-label='display sidebar'>
+          <button
+            onClick={() => toggleDrawer()}
+            aria-label='display sidebar'
+            className='lg:hidden'
+          >
             <img
               width={35}
               src={svgObject.moreBlack}

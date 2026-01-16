@@ -12,8 +12,8 @@ export default function Drawer({
 }) {
   return (
     <aside
-      className={`z-1 fixed top-0 w-screen h-screen flex  transition-transform duration-500 ease-out
-          ${drawerState ? '-translate-x-100' : ''}`}
+      className={`z-1 fixed top-0 w-screen h-screen flex transition-transform duration-500 ease-out
+          ${drawerState ? '-translate-x-full ' : ''}`}
     >
       <nav className='dark:text-white text-gray-800 dark:bg-slate-800 w-80 bg-white p-3 overflow-hidden'>
         <div className='flex gap-3 items-center pt-3 pb-6'>
