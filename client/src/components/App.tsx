@@ -4,18 +4,20 @@ import { useState } from 'react';
 import Footer from './footer/Footer';
 
 export default function App() {
-  const [theme, setTheme] = useState(true);
+  const [theme, setTheme] = useState<boolean>(true);
+  const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
 
+  const toggleSignIn = (value: boolean) => setIsSignedIn(value);
   const toggleTheme = () => setTheme(!theme);
 
   return (
     <div
-      className={`${
+      className={`min-h-screen dark:bg-slate-900 bg-gray-100 ${
         theme ? 'dark' : ''
-      } min-h-screen dark:bg-slate-900 bg-gray-100`}
+      } `}
     >
-      <Header toggleTheme={toggleTheme} />
-      <Outlet />
+      <Header isSignedIn={isSignedIn} toggleTheme={toggleTheme} />
+      <Outlet context={{ isSignedIn, toggleSignIn }} />
       <Footer />
     </div>
   );

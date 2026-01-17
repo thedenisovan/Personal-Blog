@@ -17,8 +17,12 @@ import cycling from '..//assets/svg-repo/cycling.svg';
 import gamepad from '..//assets/svg-repo/gamepad.svg';
 import code from '..//assets/svg-repo/code.svg';
 import heart from '..//assets/svg-repo/heart.svg';
+import outLight from '..//assets/svg-repo/outLigth.svg';
+import outDark from '..//assets/svg-repo/outDark.svg';
 
 const svgObject = {
+  outDark,
+  outLight,
   book,
   cycling,
   gamepad,

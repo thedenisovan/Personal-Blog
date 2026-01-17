@@ -2,7 +2,7 @@ export default function CallToAction() {
   return (
     <div className='text-center bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-2xl p-8 text-white shadow-2xl'>
       <h3 className='text-3xl font-bold mb-4'>Let's Connect!</h3>
-      <p className='text-blue-100 mb-6! max-w-2xl mx-auto! mt-4!'>
+      <p className='text-blue-100 2xl:text-lg mb-6! max-w-2xl mx-auto! mt-4!'>
         I'm always excited to connect with fellow developers, designers, and
         tech enthusiasts. Feel free to reach out if you want to collaborate or
         just chat!

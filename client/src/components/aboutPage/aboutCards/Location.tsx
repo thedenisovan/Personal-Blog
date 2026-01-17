@@ -29,7 +29,7 @@ export default function Location() {
           <p className='text-center'>England</p>
         </div>
       </div>
-      <p className='mt-4!'>
+      <p className='mt-4! 2xl:text-lg text-center '>
         Based in beautiful “Misty Albion,” England, though originally I come
         from Latvia, so roughly 1,600 km away from my homeland.
       </p>

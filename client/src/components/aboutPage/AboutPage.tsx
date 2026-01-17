@@ -31,10 +31,10 @@ export default function AboutPage() {
             <h3 className='mb-6! text-2xl font-bold text-gray-900 dark:text-white'>
               My Story
             </h3>
-            <p className='pb-6'>{text.myStory}</p>
-            <p className='pb-6'>{text.myStory2}</p>
-            <p>{text.myStory3}</p>
-            <p className='pt-6'>{text.myStory4}</p>
+            <p className='pb-6 2xl:text-lg!'>{text.myStory}</p>
+            <p className='pb-6 2xl:text-lg!'>{text.myStory2}</p>
+            <p className='2xl:text-lg!'>{text.myStory3}</p>
+            <p className='pt-6 2xl:text-lg!'>{text.myStory4}</p>
           </div>
           <section className='grid grid-cols-1 md:grid-cols-2 gap-8 my-16!'>
             <Location />

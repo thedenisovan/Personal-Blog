@@ -5,14 +5,16 @@ export default function Drawer({
   toggleDrawer,
   toggleTheme,
   drawerState,
+  isSignedIn,
 }: {
+  isSignedIn: boolean;
   drawerState: boolean;
   toggleTheme: () => void;
   toggleDrawer: () => void;
 }) {
   return (
     <aside
-      className={`z-1 fixed h-screen flex transition-transform duration-500 ease-out inset-0
+      className={`z-1 md:hidden fixed h-screen flex transition-transform duration-500 ease-out inset-0
           ${drawerState ? '-translate-x-full ' : ''}`}
     >
       <nav className='dark:text-white text-gray-800 dark:bg-slate-800 w-[80%] bg-white p-3 overflow-hidden'>
@@ -60,7 +62,48 @@ export default function Drawer({
               <p className='font-medium text-xl'>About</p>
             </Link>
           </li>
-          <hr className='w-100 -translate-x-10 my-10!' />
+          <hr className='w-100 -translate-x-10 my-5!' />
+
+          {!isSignedIn && (
+            <li className='flex items-center gap-3 py-2'>
+              <img
+                width={25}
+                className='hidden! dark:inline!'
+                src={svgObject.outLight}
+                aria-hidden='true'
+              />
+              <img
+                width={25}
+                src={svgObject.outDark}
+                className='inline! dark:hidden!'
+                aria-hidden='true'
+              />
+              <Link to='signin'>
+                <p className='font-medium text-xl'>Login</p>
+              </Link>
+            </li>
+          )}
+
+          {isSignedIn && (
+            <li className='flex items-center gap-3 py-2'>
+              <img
+                width={25}
+                className='hidden! dark:inline!'
+                src={svgObject.outLight}
+                aria-hidden='true'
+              />
+              <img
+                width={25}
+                src={svgObject.outDark}
+                className='inline! dark:hidden!'
+                aria-hidden='true'
+              />
+              <Link to='signin'>
+                <p className='font-medium text-xl'>Signout</p>
+              </Link>
+            </li>
+          )}
+
           <li
             tabIndex={1}
             role='button'

@@ -3,6 +3,12 @@ declare global {
     interface ClassName {
       className?: string;
     }
+    interface AppContextType {
+      isSignedIn: boolean;
+      toggleSignIn: (value: boolean) => void;
+      theme: boolean;
+      toggleTheme: () => void;
+    }
   }
 }
 
