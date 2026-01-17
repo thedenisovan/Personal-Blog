@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router';
 import Header from './header/Header';
 import { useState } from 'react';
+import Footer from './footer/Footer';
 
 export default function App() {
   const [theme, setTheme] = useState(true);
@@ -15,6 +16,7 @@ export default function App() {
     >
       <Header toggleTheme={toggleTheme} />
       <Outlet />
+      <Footer />
     </div>
   );
 }

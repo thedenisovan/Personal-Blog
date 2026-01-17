@@ -25,16 +25,48 @@ export default function Header({ toggleTheme }: { toggleTheme: () => void }) {
               </h2>
             </li>
             <li className='hidden md:inline'>
-              <Link to='/'>Articles</Link>
+              <Link to='/' className='flex items-center gap-1'>
+                <img
+                  src={svgObject.latestWhite}
+                  alt='articles icon'
+                  aria-hidden='true'
+                  width={25}
+                  className='dark:inline! hidden!'
+                />
+                <img
+                  src={svgObject.latestBlack}
+                  alt='articles icon'
+                  aria-hidden='true'
+                  width={25}
+                  className='inline! dark:hidden!'
+                />
+                <p>Articles</p>
+              </Link>
             </li>
             <li className='hidden md:inline'>
-              <Link to='/about'>About</Link>
+              <Link to='/about' className='flex items-center gap-1'>
+                <img
+                  src={svgObject.aboutWhite}
+                  alt='articles icon'
+                  aria-hidden='true'
+                  width={25}
+                  className='dark:inline! hidden!'
+                />
+                <img
+                  src={svgObject.aboutBlack}
+                  alt='articles icon'
+                  aria-hidden='true'
+                  width={25}
+                  className='inline! dark:hidden!'
+                />
+                <p>About</p>
+              </Link>
             </li>
           </div>
           <li className=' hidden md:block'>
             <button
               onClick={() => toggleTheme()}
-              className='dark:inline! hidden! cursor-pointer hover:bg-slate-400/10 duration-300 border-gray-500! p-2 border rounded-lg'
+              className='dark:inline! hidden! cursor-pointer hover:bg-slate-400/20 duration-200 border-gray-500! p-2 border rounded-lg'
             >
               <img
                 width={24}
@@ -44,7 +76,7 @@ export default function Header({ toggleTheme }: { toggleTheme: () => void }) {
             </button>
             <button
               onClick={() => toggleTheme()}
-              className='dark:hidden! inline! cursor-pointer border-gray-400! hover:bg-slate-800/5 duration-300 p-2 border rounded-lg'
+              className='dark:hidden! inline! cursor-pointer border-gray-400! hover:bg-slate-800/5 duration-200 p-2 border rounded-lg'
             >
               <img
                 width={24}
