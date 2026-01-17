@@ -9,44 +9,73 @@ export default function Header({ toggleTheme }: { toggleTheme: () => void }) {
   const toggleDrawer = () => setDrawerState(!drawerState);
 
   return (
-    <header className='sticky z-40 top-0! dark:bg-slate-800 dark:border-slate-700 bg-white border-b border-gray-200 dark:text-white'>
-      <ul className='flex justify-between items-center px-2 py-2! dark:p-3!'>
-        <li>
-          <h2 className='text-center font-medium text-xl'>Dainis</h2>
-          <h2 className='text-center font-medium text-xl'>Dilevka</h2>
-        </li>
-        <li className='hidden md:inline'>
-          <Link to='/'>Articles</Link>
-        </li>
-        <li className='hidden md:inline'>
-          <Link to='/about'>About</Link>
-        </li>
-        <li>
-          <button
-            onClick={() => toggleDrawer()}
-            aria-label='display sidebar'
-            className='md:hidden'
-          >
-            <img
-              width={35}
-              src={svgObject.moreBlack}
-              alt='three vertical dots'
-              className='dark:hidden!'
-            />
-            <img
-              width={35}
-              src={svgObject.moreWhite}
-              alt='three vertical dots'
-              className='hidden! dark:block!'
-            />
-          </button>
-        </li>
-      </ul>
-      <Drawer
-        drawerState={drawerState}
-        toggleTheme={toggleTheme}
-        toggleDrawer={toggleDrawer}
-      ></Drawer>
-    </header>
+    <div className='sticky z-40 top-0! dark:bg-slate-800 dark:border-slate-700 bg-white border-b border-gray-200 dark:text-white'>
+      <header className='max-w-6xl mx-auto! h-16 px-6 xl:px-0'>
+        <ul className='flex justify-between items-center! h-full'>
+          <div className='flex items-center gap-20'>
+            <li>
+              <h2 className='text-center font-medium text-xl md:hidden'>
+                Dainis
+              </h2>
+              <h2 className='text-center font-medium text-xl md:hidden'>
+                Dilevka
+              </h2>
+              <h2 className=' font-medium text-2xl hidden md:inline'>
+                Dainis Dilevka
+              </h2>
+            </li>
+            <li className='hidden md:inline'>
+              <Link to='/'>Articles</Link>
+            </li>
+            <li className='hidden md:inline'>
+              <Link to='/about'>About</Link>
+            </li>
+          </div>
+          <li className=' hidden md:block'>
+            <button
+              onClick={() => toggleTheme()}
+              className='dark:inline! hidden! cursor-pointer hover:bg-slate-400/10 duration-300 border-gray-500! p-2 border rounded-lg'
+            >
+              <img
+                width={24}
+                src={svgObject.sun}
+                alt='light theme button icon'
+              />
+            </button>
+            <button
+              onClick={() => toggleTheme()}
+              className='dark:hidden! inline! cursor-pointer border-gray-400! hover:bg-slate-800/5 duration-300 p-2 border rounded-lg'
+            >
+              <img
+                width={24}
+                src={svgObject.moon}
+                alt='dark theme button icon'
+              />
+            </button>
+          </li>
+          <li className='md:hidden'>
+            <button onClick={() => toggleDrawer()} aria-label='display sidebar'>
+              <img
+                width={35}
+                src={svgObject.moreBlack}
+                alt='three vertical dots'
+                className='dark:hidden!'
+              />
+              <img
+                width={35}
+                src={svgObject.moreWhite}
+                alt='three vertical dots'
+                className='hidden! dark:block!'
+              />
+            </button>
+          </li>
+        </ul>
+        <Drawer
+          drawerState={drawerState}
+          toggleTheme={toggleTheme}
+          toggleDrawer={toggleDrawer}
+        ></Drawer>
+      </header>
+    </div>
   );
 }
