@@ -19,8 +19,22 @@ import code from '..//assets/svg-repo/code.svg';
 import heart from '..//assets/svg-repo/heart.svg';
 import outLight from '..//assets/svg-repo/outLigth.svg';
 import outDark from '..//assets/svg-repo/outDark.svg';
+import heroBg from '..//assets/bg.jpg';
+import boltDark from '..//assets/svg-repo/bolt-dark.svg';
+import boltLight from '..//assets/svg-repo/bolt-light.svg';
+import chartLight from '..//assets/svg-repo/chart-ligth.svg';
+import chartDark from '..//assets/svg-repo/chart-dark.svg';
+import starDark from '..//assets/svg-repo/star-dark.svg';
+import starLight from '..//assets/svg-repo/star-light.svg';
 
 const svgObject = {
+  boltDark,
+  boltLight,
+  starDark,
+  starLight,
+  chartDark,
+  chartLight,
+  heroBg,
   outDark,
   outLight,
   book,

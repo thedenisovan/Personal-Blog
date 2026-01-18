@@ -1,6 +1,7 @@
 import App from '../components/App';
 import HomePage from '../components/homePage/HomePage';
 import AboutPage from '../components/aboutPage/AboutPage';
+import Signin from '../components/auth/Signin';
 
 const routes = [
   {
@@ -15,6 +16,10 @@ const routes = [
       {
         path: 'about',
         element: <AboutPage />,
+      },
+      {
+        path: 'signin',
+        element: <Signin />,
       },
     ],
   },

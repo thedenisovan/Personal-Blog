@@ -2,6 +2,13 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+.bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(198, 174, 174, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(137, 8, 8, 0.15) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
 /* 1. Use a more-intuitive box-sizing model */
 *,
 *::before,
@@ -102,4 +109,39 @@ h6 {
 
 .animate-translate-up {
   animation: translate-up 900ms ease-out forwards;
+}
+
+@keyframes animateSvg {
+  0%,
+  50%,
+  100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-10px) rotate(10deg);
+  }
+  75% {
+    transform: translateY(10px) rotate(-10deg);
+  }
+}
+
+@keyframes animateSvgTwo {
+  0%,
+  50%,
+  100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(10px) rotate(-10deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(10deg);
+  }
+}
+
+.animate-svg {
+  animation: animateSvg 3000ms infinite linear;
+}
+.animate-svg-two {
+  animation: animateSvgTwo 3000ms infinite linear;
 }

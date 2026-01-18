@@ -71,10 +71,13 @@ export default function Header({
           </div>
           <div className='items-center gap-6 hidden md:flex'>
             {!isSignedIn && (
-              <button className='cursor-pointer hover:bg-slate-700/80 duration-200 shadow-xl bg-black dark:bg-slate-700 flex items-center px-3 py-2 rounded-lg'>
+              <Link
+                to='signin'
+                className='cursor-pointer hover:bg-slate-700/80 duration-200 shadow-xl bg-black dark:bg-slate-700 flex items-center px-3 py-2 rounded-lg'
+              >
                 <img width={25} src={svgObject.outLight} aria-hidden='true' />
-                <p className='font-medium text-white'>Login</p>
-              </button>
+                <p className='font-medium text-white'>Signin</p>
+              </Link>
             )}
             {isSignedIn && (
               <button className='cursor-pointer hover:bg-slate-700/80 duration-200 shadow-xl bg-black dark:bg-slate-700 flex items-center px-3 py-2 rounded-lg'>
