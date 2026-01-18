@@ -30,11 +30,11 @@ async function getPostData(req: Request, res: Response) {
 
 async function getAllPublishedPosts(req: Request, res: Response) {
   try {
-    const publishedPost = await prisma.post.findMany(/*{
+    const publishedPost = await prisma.post.findMany({
       where: {
         published: true,
       },
-    }*/);
+    });
 
     if (!publishedPost.length) {
       return res.status(200).json({ message: 'No posts.' });
