@@ -10,6 +10,17 @@ declare global {
       toggleTheme: () => void;
     }
   }
+
+  interface Post {
+    id: number;
+    createdAt: string;
+    title: string;
+    description: string;
+    content: string;
+    published: boolean;
+    authorId: number;
+    categoryId: number;
+  }
 }
 
 export {};

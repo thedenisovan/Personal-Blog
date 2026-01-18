@@ -1,9 +1,11 @@
-import svgObject from '../../utils/svgObject';
+import svgObject from '../../../utils/svgObject';
 
 export default function HomeHeader() {
   return (
-    <header className='bg-linear-to-br from-blue-100 via-indigo-100 to-purple-100 dark:from-slate-800 dark:via-indigo-900/20 dark:to-purple-900/20 border-b border-gray-200 dark:border-slate-700'>
-      <div className='max-w-6xl mx-auto px-6 py-20'>
+    <header className='overflow-hidden bg-linear-to-br from-blue-100 via-indigo-100 to-purple-100 dark:from-slate-800 dark:via-indigo-900/20 dark:to-purple-900/20 border-b border-gray-200 dark:border-slate-700'>
+      <div className='max-w-6xl mx-auto! px-6 py-20 relative'>
+        <div className='bg-pink-400 absolute bottom-30 left-4 blur-[140px] w-50 h-50'></div>
+        <div className='bg-blue-400 absolute top-30 right-4 blur-[140px] w-50 h-50'></div>
         <div className='text-center max-w-3xl mx-auto!'>
           <div className='flex items-center justify-center gap-6 mb-6!'>
             <img
@@ -43,10 +45,34 @@ export default function HomeHeader() {
               Stories & Ideas
             </span>
           </h2>
-          <p className='text-xl text-gray-600 dark:text-gray-300 mb-6 leading-relaxed'>
+          <p className='text-xl text-gray-600 dark:text-gray-300 mb-6! leading-relaxed'>
             Dive into a world of knowledge, inspiration, and creativity. Explore
             articles on development, design, and the future of technology.
           </p>
+          <nav className='flex items-center justify-center gap-4'>
+            <a
+              href='#articles'
+              className='bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3! rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 group'
+            >
+              Start Reading
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                width='24'
+                height='24'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                stroke-width='2'
+                stroke-linecap='round'
+                stroke-linejoin='round'
+                className='lucide lucide-arrow-right w-5 h-5 group-hover:translate-x-1 transition-transform'
+                aria-hidden='true'
+              >
+                <path d='M5 12h14'></path>
+                <path d='m12 5 7 7-7 7'></path>
+              </svg>
+            </a>
+          </nav>
         </div>
       </div>
     </header>

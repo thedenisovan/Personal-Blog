@@ -2,10 +2,12 @@ import { Outlet } from 'react-router';
 import Header from './header/Header';
 import { useState } from 'react';
 import Footer from './footer/Footer';
+import useFetchPosts from './fetchPosts';
 
 export default function App() {
   const [theme, setTheme] = useState<boolean>(true);
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
+  const { posts } = useFetchPosts();
 
   const toggleSignIn = (value: boolean) => setIsSignedIn(value);
   const toggleTheme = () => setTheme(!theme);
@@ -17,7 +19,7 @@ export default function App() {
       } `}
     >
       <Header isSignedIn={isSignedIn} toggleTheme={toggleTheme} />
-      <Outlet context={{ isSignedIn, toggleSignIn }} />
+      <Outlet context={{ isSignedIn, toggleSignIn, posts }} />
       <Footer />
     </div>
   );
