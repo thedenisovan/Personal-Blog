@@ -18,7 +18,7 @@ export default function HomeHeader() {
           </div>
           <h2 className='text-5xl md:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight'>
             Discover Amazing
-            <span className='block mt-2 bg-gradient-to-r mb-6! from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent'>
+            <span className='block mt-2 bg-linear-to-br mb-6! from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent'>
               Stories & Ideas
             </span>
           </h2>
@@ -29,7 +29,7 @@ export default function HomeHeader() {
           <nav className='flex items-center justify-center gap-4'>
             <a
               href='#articles'
-              className='bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3! rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 group'
+              className='bg-linear-to-br from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3! rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 group'
             >
               Start Reading
               <svg

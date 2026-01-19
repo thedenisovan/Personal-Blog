@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
 
-export default function useFetchPosts(url = 'http://localhost:5000/') {
-  const [posts, setPosts] = useState<Post[]>([]);
+export default function useFetchPosts(
+  url: string = 'http://localhost:5000/',
+  multiple: boolean = true,
+) {
+  const [allPosts, setAllPosts] = useState<Post[] | Post>([]);
+  const [post, setPost] = useState<Post>();
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    (async () => {
+    const fetchData = async () => {
       setLoading(true);
       setError('');
 
@@ -18,15 +22,20 @@ export default function useFetchPosts(url = 'http://localhost:5000/') {
         }
 
         const data = await res.json();
-        setPosts(data.results ?? []);
+
+        // If hook is used to get all posts use top state else bottom
+        if (multiple) setAllPosts(data.results ?? []);
+        else setPost(data.results ?? '');
       } catch (err) {
         if (err instanceof Error) setError(err.message);
         else setError('Unknown Error');
       } finally {
         setLoading(false);
       }
-    })();
-  }, [url]);
+    };
 
-  return { posts, error, loading };
+    fetchData();
+  }, [url, multiple]);
+
+  return { allPosts, error, loading, post };
 }

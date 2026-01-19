@@ -10,7 +10,7 @@ export default function ArticleCard({
   date?: string;
 }) {
   return (
-    <article className='group  cursor-pointer bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-2xl overflow-hidden hover:shadow-2xl hover:border-indigo-300 dark:hover:border-indigo-700 transition-transform duration-300'>
+    <article className='group cursor-pointer bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-2xl overflow-hidden hover:shadow-2xl hover:border-indigo-300 dark:hover:border-indigo-700 transition-transform duration-300'>
       <div className='p-8'>
         <div className='flex items-center gap-3 mb-4!'>
           <span className='inline-block px-4 py-1.5 text-xs font-semibold bg-gradient-to-r from-blue-100 to-indigo-100 dark:from-blue-900/40 dark:to-indigo-900/40 text-blue-700 dark:text-blue-300 rounded-full'>

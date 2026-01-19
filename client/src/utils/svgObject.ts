@@ -26,8 +26,12 @@ import chartLight from '..//assets/svg-repo/chart-ligth.svg';
 import chartDark from '..//assets/svg-repo/chart-dark.svg';
 import starDark from '..//assets/svg-repo/star-dark.svg';
 import starLight from '..//assets/svg-repo/star-light.svg';
+import loadingDark from '../assets/svg-repo/loading-black.svg';
+import loadingLight from '../assets/svg-repo/loading-white.svg';
 
 const svgObject = {
+  loadingDark,
+  loadingLight,
   boltDark,
   boltLight,
   starDark,
