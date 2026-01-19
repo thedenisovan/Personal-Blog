@@ -39,7 +39,22 @@ async function getAllPublishedPosts(req: Request, res: Response) {
     if (!publishedPost.length) {
       return res.status(200).json({ message: 'No posts.' });
     } else {
-      return res.status(200).json({ publishedPost });
+      try {
+        // Clones published posts and adds category name async
+        const results = await Promise.all(
+          publishedPost.map(async (post) => ({
+            ...post,
+            categoryName: await prisma.category.findUnique({
+              where: { id: post.categoryId },
+              select: { name: true },
+            }),
+          })),
+        );
+
+        return res.status(200).json({ results });
+      } catch {
+        res.sendStatus(500);
+      }
     }
   } catch {
     res.sendStatus(500);
