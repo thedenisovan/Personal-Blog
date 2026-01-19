@@ -9,20 +9,20 @@ async function getPostData(req: Request, res: Response) {
     return res.status(400).json({ message: 'Invalid post ID.' });
 
   try {
-    const post = await prisma.post.findUnique({
+    const results = await prisma.post.findUnique({
       where: {
         published: true,
         id: postId,
       },
     });
 
-    if (!post) return res.status(404).json({ message: 'Post not found.' });
+    if (!results) return res.status(404).json({ message: 'Post not found.' });
 
     const comments = await prisma.comment.findMany({
       where: { postId },
     });
 
-    return res.json({ post, comments });
+    return res.json({ results, comments });
   } catch {
     res.sendStatus(500);
   }
