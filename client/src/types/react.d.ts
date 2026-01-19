@@ -20,6 +20,10 @@ declare global {
     published: boolean;
     authorId: number;
     categoryId: number;
+    categoryName: {
+      name: string;
+    };
+    dateString: string;
   }
 }
 

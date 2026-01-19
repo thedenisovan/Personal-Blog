@@ -7,7 +7,7 @@ import useFetchPosts from './fetchPosts';
 export default function App() {
   const [theme, setTheme] = useState<boolean>(true);
   const [isSignedIn, setIsSignedIn] = useState<boolean>(false);
-  const { posts } = useFetchPosts();
+  const { posts, loading, error } = useFetchPosts();
 
   const toggleSignIn = (value: boolean) => setIsSignedIn(value);
   const toggleTheme = () => setTheme(!theme);
@@ -19,7 +19,7 @@ export default function App() {
       } `}
     >
       <Header isSignedIn={isSignedIn} toggleTheme={toggleTheme} />
-      <Outlet context={{ isSignedIn, toggleSignIn, posts }} />
+      <Outlet context={{ isSignedIn, toggleSignIn, posts, loading, error }} />
       <Footer />
     </div>
   );

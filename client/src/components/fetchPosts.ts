@@ -18,7 +18,7 @@ export default function useFetchPosts(url = 'http://localhost:5000/') {
         }
 
         const data = await res.json();
-        setPosts(data.publishedPost ?? []);
+        setPosts(data.results ?? []);
       } catch (err) {
         if (err instanceof Error) setError(err.message);
         else setError('Unknown Error');
