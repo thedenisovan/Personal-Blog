@@ -44,10 +44,18 @@ async function getAllPublishedPosts(req: Request, res: Response) {
         const results = await Promise.all(
           publishedPost.map(async (post) => ({
             ...post,
+
             categoryName: await prisma.category.findUnique({
               where: { id: post.categoryId },
               select: { name: true },
             }),
+
+            authorUsername: await prisma.user.findUnique({
+              where: { id: post.authorId },
+              select: { username: true },
+            }),
+
+            dateString: new Date(post.createdAt).toDateString(),
           })),
         );
 
