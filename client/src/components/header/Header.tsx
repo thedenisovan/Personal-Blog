@@ -18,7 +18,7 @@ export default function Header({
     <div className='sticky z-40 top-0! dark:bg-slate-800 dark:border-slate-700 bg-white border-b border-gray-200 dark:text-white'>
       <header className='max-w-6xl mx-auto! h-16 px-6 xl:px-0'>
         <ul className='flex justify-between items-center! h-full'>
-          <div className='flex items-center gap-20'>
+          <ul className='flex items-center gap-20'>
             <li>
               <h2 className='text-center font-medium text-xl md:hidden'>
                 Dainis
@@ -68,7 +68,7 @@ export default function Header({
                 <p>About</p>
               </Link>
             </li>
-          </div>
+          </ul>
           <div className='items-center gap-6 hidden md:flex'>
             {!isSignedIn && (
               <Link

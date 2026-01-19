@@ -7,7 +7,7 @@ import CallToAction from './aboutCards/CallToAction';
 
 export default function AboutPage() {
   return (
-    <main className='dark:bg-slate-900 bg-gray-100 px-6 py-12 max-w-4xl mx-auto!'>
+    <main className='dark:bg-slate-900 bg-gray-50 px-6 py-12 max-w-4xl mx-auto!'>
       <header className='flex flex-col items-center justify-center'>
         <div className='mb-8! animate-scale-in z-0 w-32 h-32 text-5xl shadow-2xl flex items-center justify-center rounded-full bg-linear-to-br from-blue-500 to-purple-600 text-white font-bold'>
           DD

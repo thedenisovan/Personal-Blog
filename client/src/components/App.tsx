@@ -14,7 +14,7 @@ export default function App() {
 
   return (
     <div
-      className={`min-h-screen dark:bg-slate-900 bg-gray-100 flex flex-col ${
+      className={`min-h-screen  dark:bg-slate-900 bg-gray-50 flex flex-col ${
         theme ? 'dark' : ''
       } `}
     >

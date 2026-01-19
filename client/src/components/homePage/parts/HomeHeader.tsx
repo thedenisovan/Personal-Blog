@@ -2,42 +2,19 @@ import svgObject from '../../../utils/svgObject';
 
 export default function HomeHeader() {
   return (
-    <header className='overflow-hidden bg-linear-to-br from-blue-100 via-indigo-100 to-purple-100 dark:from-slate-800 dark:via-indigo-900/20 dark:to-purple-900/20 border-b border-gray-200 dark:border-slate-700'>
-      <div className='max-w-6xl mx-auto! px-6 py-20 relative'>
+    <header className=' duration-300 overflow-hidden bg-linear-to-br from-blue-100 via-indigo-100 to-purple-100 dark:from-slate-800 dark:via-indigo-900/20 dark:to-purple-900/20 border-b border-gray-200 dark:border-slate-700'>
+      <div className='max-w-6xl mx-auto! px-6 py-20 relative animate-translate-up'>
         <div className='bg-pink-400 absolute bottom-30 left-4 blur-[140px] w-50 h-50'></div>
         <div className='bg-blue-400 absolute top-30 right-4 blur-[140px] w-50 h-50'></div>
         <div className='text-center max-w-3xl mx-auto!'>
           <div className='flex items-center justify-center gap-6 mb-6!'>
-            <img
-              width={50}
-              src={svgObject.starLight}
-              className='hidden! dark:inline! animate-svg'
-            />
-            <img
-              width={50}
-              src={svgObject.chartLight}
-              className='hidden! dark:inline! animate-svg-two'
-            />
-            <img
-              width={45}
-              src={svgObject.boltLight}
-              className='hidden! dark:inline! animate-svg'
-            />
-            <img
-              width={50}
-              src={svgObject.starDark}
-              className='dark:hidden! inline! animate-svg'
-            />
-            <img
-              width={50}
-              src={svgObject.chartDark}
-              className='dark:hidden! inline! animate-svg-two'
-            />
-            <img
-              width={45}
-              src={svgObject.boltDark}
-              className='dark:hidden! inline! animate-svg'
-            />
+            <SvgCompLight svg={svgObject.starLight} />
+            <SvgCompLight svg={svgObject.chartLight} />
+            <SvgCompLight svg={svgObject.boltLight} />
+
+            <SvgCompDark svg={svgObject.starDark} />
+            <SvgCompDark svg={svgObject.chartDark} />
+            <SvgCompDark svg={svgObject.boltDark} />
           </div>
           <h2 className='text-5xl md:text-6xl font-bold text-gray-800 dark:text-white mb-6 leading-tight'>
             Discover Amazing
@@ -76,5 +53,29 @@ export default function HomeHeader() {
         </div>
       </div>
     </header>
+  );
+}
+
+function SvgCompLight({ svg }: { svg: string }) {
+  return (
+    <img
+      width={50}
+      aria-label='hidden'
+      alt='simple svg icon'
+      src={svg}
+      className='hidden! dark:inline! animate-svg'
+    />
+  );
+}
+
+function SvgCompDark({ svg }: { svg: string }) {
+  return (
+    <img
+      width={50}
+      aria-label='hidden'
+      alt='simple svg icon'
+      src={svg}
+      className='dark:hidden! inline! animate-svg'
+    />
   );
 }
