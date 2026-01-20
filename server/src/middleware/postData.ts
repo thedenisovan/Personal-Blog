@@ -14,6 +14,9 @@ async function getPostData(req: Request, res: Response) {
         published: true,
         id: postId,
       },
+      include: {
+        likedBy: true,
+      },
     });
 
     const comments = await prisma.comment.findMany({
