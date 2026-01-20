@@ -37,5 +37,6 @@ export default function useFetchPosts(
     fetchData();
   }, [url, multiple]);
 
+  console.log(post);
   return { allPosts, error, loading, post };
 }

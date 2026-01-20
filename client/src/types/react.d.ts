@@ -24,6 +24,14 @@ declare global {
       name: string;
     };
     dateString: string;
+    likedBy: string[];
+    comments: {
+      id: number;
+      content: string;
+      createdAt: string;
+      authorName: string;
+      postId: number;
+    }[];
   }
 }
 
