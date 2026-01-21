@@ -1,14 +1,25 @@
 import { useState, type FormEvent } from 'react';
 import { Navigate, useOutletContext } from 'react-router';
 import { jwtDecode } from 'jwt-decode';
+import type { UserToken } from '../../types/react';
 
 export default function Signin() {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [errorMsg, setErrorMsg] = useState<string[]>([]);
-  const { isSignedIn, toggleSignIn } = useOutletContext<{
+  const { isSignedIn, toggleSignIn, setUser } = useOutletContext<{
     isSignedIn: boolean;
     toggleSignIn: (flag: boolean) => void;
+    setUser: (
+      val: {
+        exp: number;
+        iat: number;
+        id: number;
+        password: string;
+        role: string;
+        username: string;
+      } | null,
+    ) => void;
   }>();
 
   // Extracts token or error message after user attempts to sign in
@@ -36,7 +47,12 @@ export default function Signin() {
         toggleSignIn(true);
 
         const decoded = jwtDecode(result.token);
-        localStorage.setItem('user', JSON.stringify(decoded));
+        const user = JSON.stringify(decoded);
+
+        if (decoded) {
+          setUser(decoded as UserToken);
+        }
+        localStorage.setItem('user', user);
       }
     } catch (error) {
       if (error instanceof Error) {

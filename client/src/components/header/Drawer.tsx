@@ -6,11 +6,9 @@ export default function Drawer({
   toggleTheme,
   drawerState,
   isSignedIn,
-  toggleSignIn,
-  removeToken,
+  signoutUser,
 }: {
-  removeToken: () => void;
-  toggleSignIn: (val: boolean) => void;
+  signoutUser: () => void;
   isSignedIn: boolean;
   drawerState: boolean;
   toggleTheme: () => void;
@@ -105,8 +103,7 @@ export default function Drawer({
               <Link
                 onClick={() => {
                   toggleDrawer();
-                  removeToken();
-                  toggleSignIn(false);
+                  signoutUser();
                 }}
                 to='signin'
               >

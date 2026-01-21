@@ -43,4 +43,13 @@ export interface Comment {
   postId: number;
 }
 
+export interface UserToken {
+  exp: number;
+  iat: number;
+  id: number;
+  password: string;
+  role: string;
+  username: string;
+}
+
 export {};

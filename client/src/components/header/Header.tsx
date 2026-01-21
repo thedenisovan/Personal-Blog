@@ -6,19 +6,14 @@ import svgObject from '../../utils/svgObject';
 export default function Header({
   toggleTheme,
   isSignedIn,
-  toggleSignIn,
+  signoutUser,
 }: {
   toggleTheme: () => void;
-  toggleSignIn: (val: boolean) => void;
+  signoutUser: () => void;
   isSignedIn: boolean;
 }) {
   const [drawerState, setDrawerState] = useState(true);
 
-  // When user signs out remove user token
-  const removeToken = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-  };
   const toggleDrawer = () => setDrawerState(!drawerState);
 
   return (
@@ -91,8 +86,7 @@ export default function Header({
             {isSignedIn && (
               <button
                 onClick={() => {
-                  toggleSignIn(false);
-                  removeToken();
+                  signoutUser();
                 }}
                 className='cursor-pointer hover:bg-slate-700/80 duration-200 shadow-xl bg-black dark:bg-slate-700 flex items-center px-3 py-2 rounded-lg'
               >
@@ -145,8 +139,7 @@ export default function Header({
           drawerState={drawerState}
           toggleTheme={toggleTheme}
           toggleDrawer={toggleDrawer}
-          removeToken={removeToken}
-          toggleSignIn={toggleSignIn}
+          signoutUser={signoutUser}
         ></Drawer>
       </header>
     </div>
