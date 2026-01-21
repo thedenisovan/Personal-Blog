@@ -6,12 +6,15 @@ import svgObject from '../../utils/svgObject';
 export default function Header({
   toggleTheme,
   isSignedIn,
+  toggleSignIn,
 }: {
   toggleTheme: () => void;
+  toggleSignIn: (val: boolean) => void;
   isSignedIn: boolean;
 }) {
   const [drawerState, setDrawerState] = useState(true);
 
+  const removeToken = () => localStorage.removeItem('token');
   const toggleDrawer = () => setDrawerState(!drawerState);
 
   return (
@@ -20,15 +23,17 @@ export default function Header({
         <ul className='flex justify-between items-center! h-full'>
           <ul className='flex items-center gap-20'>
             <li>
-              <h2 className='text-center font-medium text-xl md:hidden'>
-                Dainis
-              </h2>
-              <h2 className='text-center font-medium text-xl md:hidden'>
-                Dilevka
-              </h2>
-              <h2 className=' font-medium text-2xl hidden md:inline'>
-                Dainis Dilevka
-              </h2>
+              <Link className='cursor-default' to='/'>
+                <h2 className='text-center font-medium text-xl md:hidden'>
+                  Dainis
+                </h2>
+                <h2 className='text-center font-medium text-xl md:hidden'>
+                  Dilevka
+                </h2>
+                <h2 className=' font-medium text-2xl hidden md:inline'>
+                  Dainis Dilevka
+                </h2>
+              </Link>
             </li>
             <li className='hidden md:inline'>
               <Link to='/' className='flex items-center gap-1'>
@@ -80,7 +85,13 @@ export default function Header({
               </Link>
             )}
             {isSignedIn && (
-              <button className='cursor-pointer hover:bg-slate-700/80 duration-200 shadow-xl bg-black dark:bg-slate-700 flex items-center px-3 py-2 rounded-lg'>
+              <button
+                onClick={() => {
+                  toggleSignIn(false);
+                  removeToken();
+                }}
+                className='cursor-pointer hover:bg-slate-700/80 duration-200 shadow-xl bg-black dark:bg-slate-700 flex items-center px-3 py-2 rounded-lg'
+              >
                 <img width={25} src={svgObject.outLight} aria-hidden='true' />
                 <p className='font-medium text-white'>Signout</p>
               </button>
@@ -130,6 +141,7 @@ export default function Header({
           drawerState={drawerState}
           toggleTheme={toggleTheme}
           toggleDrawer={toggleDrawer}
+          removeToken={removeToken}
         ></Drawer>
       </header>
     </div>

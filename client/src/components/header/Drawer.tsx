@@ -6,7 +6,9 @@ export default function Drawer({
   toggleTheme,
   drawerState,
   isSignedIn,
+  removeToken,
 }: {
+  removeToken: () => void;
   isSignedIn: boolean;
   drawerState: boolean;
   toggleTheme: () => void;
@@ -78,8 +80,8 @@ export default function Drawer({
                 className='inline! dark:hidden!'
                 aria-hidden='true'
               />
-              <Link to='signin'>
-                <p className='font-medium text-xl'>Login</p>
+              <Link onClick={() => toggleDrawer()} to='signin'>
+                <p className='font-medium text-xl'>Signin</p>
               </Link>
             </li>
           )}
@@ -98,7 +100,13 @@ export default function Drawer({
                 className='inline! dark:hidden!'
                 aria-hidden='true'
               />
-              <Link to='signin'>
+              <Link
+                onClick={() => {
+                  toggleDrawer();
+                  removeToken();
+                }}
+                to='signin'
+              >
                 <p className='font-medium text-xl'>Signout</p>
               </Link>
             </li>
