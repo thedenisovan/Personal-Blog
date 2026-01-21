@@ -1,5 +1,6 @@
-import { useState, type FormEvent } from 'react';
-import type { Comment } from '../../types/react.js';
+import { useEffect, useState, type FormEvent } from 'react';
+import type { Comment, UserToken } from '../../types/react.js';
+import { useOutletContext } from 'react-router';
 
 export default function Comments({
   post,
@@ -42,7 +43,10 @@ export default function Comments({
       {comments?.length && (
         <div className='space-y-6! mb-12!'>
           {comments?.map((comment) => (
-            <div className='bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-6!'>
+            <div
+              key={comment.id}
+              className='bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-lg p-6!'
+            >
               <div className='flex items-start gap-4'>
                 <div className='w-10 h-10 bg-gray-200 dark:bg-slate-700 rounded-full flex items-center justify-center text-gray-700 dark:text-gray-300 font-semibold shrink-0'>
                   {comment.authorName[0].toUpperCase()}
@@ -86,6 +90,16 @@ function PostNewComment({
 }) {
   const [authorName, setAuthorName] = useState<string>('');
   const [content, setContent] = useState<string>('');
+  const { user } = useOutletContext<{ user: UserToken }>();
+
+  // If user is signed in set author name to signed in users username
+  useEffect(() => {
+    const setUserName = () => {
+      if (isSignedIn) setAuthorName(user.username);
+    };
+
+    setUserName();
+  });
 
   async function postNewComment(e: FormEvent) {
     e.preventDefault();
