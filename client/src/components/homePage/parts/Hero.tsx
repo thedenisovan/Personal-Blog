@@ -1,6 +1,6 @@
 import svgObject from '../../../utils/svgObject';
 
-export default function HomeHeader() {
+export default function Hero() {
   return (
     <header className=' duration-300 overflow-hidden bg-linear-to-br from-blue-100 via-indigo-100 to-purple-100 dark:from-slate-800 dark:via-indigo-900/20 dark:to-purple-900/20 border-b border-gray-200 dark:border-slate-700'>
       <div className='max-w-6xl mx-auto! px-6 py-20 relative animate-translate-up'>

@@ -1,4 +1,4 @@
-import HomeHeader from './parts/HomeHeader';
+import Hero from './parts/Hero';
 import { Link, useOutletContext } from 'react-router';
 import svgObject from '../../utils/svgObject';
 import ArticleCard from './parts/ArticleCard';
@@ -14,7 +14,7 @@ export default function HomePage() {
 
   return (
     <main className='flex-1'>
-      <HomeHeader />
+      <Hero />
 
       <div
         className={`${loading ? 'flex justify-center items-center mt-10! md:mt-35!' : ''}`}

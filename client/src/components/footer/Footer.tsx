@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className='mt-12! border-t! pl-6 flex md:justify-center dark:bg-slate-800 dark:border-slate-700 bg-white border-gray-200'>
+    <footer className='mt-12! border-t! pl-6 flex md:justify-center dark:bg-slate-800 dark:border-slate-700 bg-white border-gray-200 py-6'>
       <div className='max-w-6xl grid md:grid-cols-3 gap-6 pb-6! pt-6'>
         <div className='flex flex-col gap-1'>
           <h6 className='font-semibold text-gray-900 dark:text-white mb-2 text-sm'>

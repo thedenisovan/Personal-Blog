@@ -15,7 +15,7 @@ export default function Header({
   const toggleDrawer = () => setDrawerState(!drawerState);
 
   return (
-    <div className='sticky z-40 top-0! dark:bg-slate-800 dark:border-slate-700 bg-white border-b border-gray-200 dark:text-white'>
+    <div className='sticky z-40 top-0! dark:bg-slate-800 dark:border-slate-700 bg-white border-b border-gray-200 dark:text-white py-3'>
       <header className='max-w-6xl mx-auto! h-16 px-6 xl:px-0'>
         <ul className='flex justify-between items-center! h-full'>
           <ul className='flex items-center gap-20'>
@@ -46,7 +46,7 @@ export default function Header({
                   width={25}
                   className='inline! dark:hidden!'
                 />
-                <p>Articles</p>
+                <p className='hover:border-b text-lg'>Articles</p>
               </Link>
             </li>
             <li className='hidden md:inline'>
@@ -65,7 +65,7 @@ export default function Header({
                   width={25}
                   className='inline! dark:hidden!'
                 />
-                <p>About</p>
+                <p className='hover:border-b text-lg'>About</p>
               </Link>
             </li>
           </ul>

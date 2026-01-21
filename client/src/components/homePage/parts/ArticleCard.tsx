@@ -68,7 +68,7 @@ export default function ArticleCard({
               </div>
             )}
           </div>
-          <div className='flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-medium group-hover:gap-3 transition-all'>
+          <div className='flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-medium group-hover:gap-3 transition-all pl-3'>
             <span>Read Article</span>
             <svg
               xmlns='http://www.w3.org/2000/svg'

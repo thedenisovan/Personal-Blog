@@ -47,7 +47,7 @@ export default function PostPage() {
         ) : (
           <>
             <ArticleContent post={post} isSignedIn={isSignedIn} />
-            <Comments post={post} postId={postId} />
+            <Comments isSignedIn={isSignedIn} post={post} postId={postId} />
           </>
         )}
       </div>

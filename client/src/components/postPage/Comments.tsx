@@ -4,9 +4,11 @@ import type { Comment } from '../../types/react.js';
 export default function Comments({
   post,
   postId,
+  isSignedIn,
 }: {
   post: Post | undefined;
   postId: string;
+  isSignedIn: boolean;
 }) {
   const [comments, setComments] = useState<Comment[] | undefined>(
     post?.comments,
@@ -64,7 +66,11 @@ export default function Comments({
         </div>
       )}
 
-      <PostNewComment postId={postId} updateComments={updateComments} />
+      <PostNewComment
+        isSignedIn={isSignedIn}
+        postId={postId}
+        updateComments={updateComments}
+      />
     </div>
   );
 }
@@ -72,8 +78,10 @@ export default function Comments({
 function PostNewComment({
   postId,
   updateComments,
+  isSignedIn,
 }: {
   postId: string;
+  isSignedIn: boolean;
   updateComments: (data: Comment[]) => void;
 }) {
   const [authorName, setAuthorName] = useState<string>('');
@@ -88,14 +96,15 @@ function PostNewComment({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ authorName, content }),
       });
+
+      const res = await fetch(`http://localhost:5000/post/${postId}`);
+      const data = await res.json();
+
+      updateComments(data.results.comments);
     } catch {
       throw new Error('Error while posting new comment');
     }
 
-    const res = await fetch(`http://localhost:5000/post/${postId}`);
-    const data = await res.json();
-
-    updateComments(data.results.comments);
     setAuthorName('');
     setContent('');
   }
@@ -111,23 +120,25 @@ function PostNewComment({
         className='space-y-4'
         onSubmit={(e) => postNewComment(e)}
       >
-        <div className='mb-6!'>
-          <label
-            htmlFor='author'
-            className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2!'
-          >
-            Name
-          </label>
-          <input
-            type='text'
-            id='author'
-            onChange={(e) => setAuthorName(e.target.value)}
-            value={authorName}
-            className='w-full px-4 py-2 bg-white dark:bg-slate-900 border border-gray-300 dark:border-slate-600 rounded-md focus:ring-2 focus:ring-gray-900 dark:focus:ring-slate-500 focus:border-transparent outline-none text-gray-900 dark:text-white'
-            placeholder='Your name'
-            required
-          />
-        </div>
+        {!isSignedIn && (
+          <div className='mb-6!'>
+            <label
+              htmlFor='author'
+              className='block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2!'
+            >
+              Name
+            </label>
+            <input
+              type='text'
+              id='author'
+              onChange={(e) => setAuthorName(e.target.value)}
+              value={authorName}
+              className='w-full px-4 py-2 bg-white dark:bg-slate-900 border border-gray-300 dark:border-slate-600 rounded-md focus:ring-2 focus:ring-gray-900 dark:focus:ring-slate-500 focus:border-transparent outline-none text-gray-900 dark:text-white'
+              placeholder='Your name'
+              required
+            />
+          </div>
+        )}
         <div>
           <label
             htmlFor='content'
