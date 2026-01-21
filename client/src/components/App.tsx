@@ -18,7 +18,11 @@ export default function App() {
         theme ? 'dark' : ''
       } `}
     >
-      <Header isSignedIn={isSignedIn} toggleTheme={toggleTheme} />
+      <Header
+        isSignedIn={isSignedIn}
+        toggleSignIn={toggleSignIn}
+        toggleTheme={toggleTheme}
+      />
       <Outlet
         context={{ isSignedIn, toggleSignIn, allPosts, loading, error }}
       />
