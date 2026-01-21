@@ -21,6 +21,6 @@ export default function jwtSign(req: Request, res: Response) {
       }
 
       res.json({ token });
-    }
+    },
   );
 }
