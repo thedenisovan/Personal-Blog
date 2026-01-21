@@ -14,7 +14,11 @@ export default function Header({
 }) {
   const [drawerState, setDrawerState] = useState(true);
 
-  const removeToken = () => localStorage.removeItem('token');
+  // When user signs out remove user token
+  const removeToken = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  };
   const toggleDrawer = () => setDrawerState(!drawerState);
 
   return (
@@ -142,6 +146,7 @@ export default function Header({
           toggleTheme={toggleTheme}
           toggleDrawer={toggleDrawer}
           removeToken={removeToken}
+          toggleSignIn={toggleSignIn}
         ></Drawer>
       </header>
     </div>

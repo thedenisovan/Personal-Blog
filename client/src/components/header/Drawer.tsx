@@ -6,9 +6,11 @@ export default function Drawer({
   toggleTheme,
   drawerState,
   isSignedIn,
+  toggleSignIn,
   removeToken,
 }: {
   removeToken: () => void;
+  toggleSignIn: (val: boolean) => void;
   isSignedIn: boolean;
   drawerState: boolean;
   toggleTheme: () => void;
@@ -104,6 +106,7 @@ export default function Drawer({
                 onClick={() => {
                   toggleDrawer();
                   removeToken();
+                  toggleSignIn(false);
                 }}
                 to='signin'
               >

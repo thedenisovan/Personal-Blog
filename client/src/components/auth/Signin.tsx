@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { Navigate, useOutletContext } from 'react-router';
+import { jwtDecode } from 'jwt-decode';
 
 export default function Signin() {
   const [username, setUsername] = useState<string>('');
@@ -11,7 +12,7 @@ export default function Signin() {
   }>();
 
   // Extracts token or error message after user attempts to sign in
-  async function getSignInResponse(e: FormEvent) {
+  async function signInUser(e: FormEvent) {
     e.preventDefault();
 
     try {
@@ -33,9 +34,10 @@ export default function Signin() {
         localStorage.setItem('token', result.token);
         setErrorMsg(['']);
         toggleSignIn(true);
-      }
 
-      console.log(result.result);
+        const decoded = jwtDecode(result.token);
+        localStorage.setItem('user', JSON.stringify(decoded));
+      }
     } catch (error) {
       if (error instanceof Error) {
         console.log(error.message);
@@ -54,7 +56,7 @@ export default function Signin() {
           action='http://localhost:5000/signin'
           method='POST'
           className='flex-col flex'
-          onSubmit={(e) => getSignInResponse(e)}
+          onSubmit={(e) => signInUser(e)}
         >
           <label htmlFor='username'>Username</label>
           <input
