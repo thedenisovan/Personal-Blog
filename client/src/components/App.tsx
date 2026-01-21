@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router';
 import Header from './header/Header';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Footer from './footer/Footer';
 import useFetchPosts from './fetchPosts';
 
@@ -11,6 +11,14 @@ export default function App() {
 
   const toggleSignIn = (value: boolean) => setIsSignedIn(value);
   const toggleTheme = () => setTheme(!theme);
+
+  useEffect(() => {
+    const checkLocalStorage = () => {
+      if (localStorage.getItem('token')) setIsSignedIn(true);
+    };
+
+    checkLocalStorage();
+  });
 
   return (
     <div
