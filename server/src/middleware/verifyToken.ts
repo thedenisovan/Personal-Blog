@@ -5,7 +5,7 @@ import 'dotenv/config';
 export default function verifyToken(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   const bearerHeader = req.headers['authorization'];
 
