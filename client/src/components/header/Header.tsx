@@ -86,7 +86,9 @@ export default function Header({
             {isSignedIn && (
               <button
                 onClick={() => {
-                  signoutUser();
+                  const result = confirm('Are you sure you want to leave?');
+
+                  if (result) signoutUser();
                 }}
                 className='cursor-pointer hover:bg-slate-700/80 duration-200 shadow-xl bg-black dark:bg-slate-700 flex items-center px-3 py-2 rounded-lg'
               >
