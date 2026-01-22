@@ -22,15 +22,17 @@ export default function App() {
   };
 
   useEffect(() => {
-    signoutExpiredUser(setIsSignedIn, signoutUser, setUser);
-  }, []);
+    toggleSignedUser(setIsSignedIn, signoutUser, setUser);
+
+    if (theme) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
 
   return (
-    <div
-      className={`min-h-screen  dark:bg-slate-900 bg-gray-50 flex flex-col ${
-        theme ? 'dark' : ''
-      } `}
-    >
+    <div className={`min-h-screen  dark:bg-slate-900 bg-gray-50 flex flex-col`}>
       <Header
         isSignedIn={isSignedIn}
         toggleTheme={toggleTheme}
@@ -52,7 +54,7 @@ export default function App() {
   );
 }
 
-function signoutExpiredUser(
+function toggleSignedUser(
   setIsSignedIn: (val: boolean) => void,
   signoutUser: () => void,
   setUser: (val: UserToken | null) => void,
