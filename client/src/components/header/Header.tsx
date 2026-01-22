@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import Drawer from './Drawer';
 import { useState } from 'react';
 import svgObject from '../../utils/svgObject';
@@ -13,6 +13,9 @@ export default function Header({
   isSignedIn: boolean;
 }) {
   const [drawerState, setDrawerState] = useState(true);
+  const { pathname } = useLocation();
+
+  if (pathname === '/signin' || pathname === '/signup') return null;
 
   const toggleDrawer = () => setDrawerState(!drawerState);
 
