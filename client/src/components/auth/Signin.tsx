@@ -39,8 +39,12 @@ export default function Signin() {
 
       const result = await response.json();
 
+      // result.result obj contains error so if it exists
+      // that's mean that error happened
       if (typeof result.result !== 'undefined') {
         setErrorMsg(result.result.errors[0].msg);
+
+        // result.token is expected return obj containing token
       } else if (typeof result.token !== 'undefined') {
         localStorage.setItem('token', result.token);
         setErrorMsg(['']);
@@ -53,12 +57,16 @@ export default function Signin() {
           setUser(decoded as UserToken);
         }
         localStorage.setItem('user', user);
+      } else {
+        throw new Error(
+          `Unexpected object return inside Signin.tsx file lines  44-62.`,
+        );
       }
     } catch (error) {
       if (error instanceof Error) {
-        console.log(error.message);
+        throw new Error(`Response status: ${error.message}.`);
       } else {
-        console.log('Un known error happened.');
+        throw new Error(`Un known error took place.`);
       }
     }
   }
