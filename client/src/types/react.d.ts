@@ -24,7 +24,7 @@ declare global {
       name: string;
     };
     dateString: string;
-    likedBy: string[];
+    likes: number[Likes];
     comments: {
       id: number;
       content: string;
@@ -33,6 +33,12 @@ declare global {
       postId: number;
     }[];
   }
+}
+
+export interface Likes {
+  id: number;
+  likedBy: number;
+  postId: number;
 }
 
 export interface Comment {
