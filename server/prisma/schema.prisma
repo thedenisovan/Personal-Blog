@@ -20,7 +20,7 @@ model User {
   role     Role   @default(USER)
 
   posts Post[]
-  likes Post[] @relation("Likes")
+  likes Likes[]
 }
 
 model Post {
@@ -36,7 +36,15 @@ model Post {
   categoryId  Int
 
   comments Comment[]
-  likedBy  User[]    @relation("Likes")
+  likes    Likes[]
+}
+
+model Likes {
+  id        Int   @id @default(autoincrement())
+  user      User  @relation(fields: [likedById], references: [id], onDelete: Cascade)
+  likedById Int[]
+  post      Post  @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId    Int
 }
 
 model Category {
