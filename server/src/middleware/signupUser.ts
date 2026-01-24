@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 export default async function signupUser(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   const { username, password } = req.body;
 
@@ -17,7 +17,7 @@ export default async function signupUser(
       },
     });
 
-    next();
+    res.json({ message: 'user created' });
   } catch {
     res.status(500).json({
       message: 'server error',
