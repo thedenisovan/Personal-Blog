@@ -14,10 +14,9 @@ async function getPostData(req: Request, res: Response) {
         published: true,
         id: postId,
       },
-      include: {
-        likedBy: true,
-      },
     });
+
+    const likes = await prisma.likes.findMany({ where: { postId: postId } });
 
     const comments = await prisma.comment.findMany({
       where: { postId },
@@ -41,6 +40,7 @@ async function getPostData(req: Request, res: Response) {
           comments,
           categoryName,
           dateString,
+          likes,
         };
 
         return res.json({ results });
