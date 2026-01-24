@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
+import type { Likes } from '../../types/react';
 
 export default function ArticleContent({
   post,
@@ -7,6 +9,68 @@ export default function ArticleContent({
   post: Post | undefined;
   isSignedIn: boolean;
 }) {
+  // Boolean to check if current signed user has liked given post
+  const [userHasLiked, setUserHasLiked] = useState<boolean>(false);
+  const [numberOfLikes, setNumberOfLikes] = useState<number>(
+    post?.likes.length ?? 0,
+  );
+  // Id of current signed user
+  const [likedBy, setLikedBy] = useState<number | null>(null);
+
+  useEffect(() => {
+    // If user has liked this post update like icon to be filled heart
+    const updateLIkeStatus = () => {
+      const user = localStorage.getItem('user');
+      setLikedBy(JSON.parse(user!).id);
+      setNumberOfLikes(post?.likes.length);
+
+      // Compare current user id with array of id's of users who has liked this post
+      const result = post?.likes.find(
+        (like: Likes) => like.likedById === JSON.parse(user!).id,
+      );
+
+      // If no user found than no like else has liked
+      if (typeof result === 'undefined') return setUserHasLiked(false);
+      return setUserHasLiked(true);
+    };
+
+    if (isSignedIn) updateLIkeStatus();
+  }, [post?.likes, isSignedIn]);
+
+  // Likes or unlike post
+  const updateReaction = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/post/${post!.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ likedBy }),
+      });
+
+      const result = await response.json();
+
+      // Api call to fetch post and use it's likes array to get amount of likes
+      const res = await fetch(`http://localhost:5000/post/${post!.id}`);
+      const r = await res.json();
+
+      // If user likes message set lie state to true and update amount of likes in ui
+      // else do opposite
+      if (result.message === 'liked') {
+        setUserHasLiked(true);
+        setNumberOfLikes(r.results.likes.length);
+      } else {
+        setUserHasLiked(false);
+        setNumberOfLikes(r.results.likes.length);
+      }
+    } catch (error) {
+      console.error(
+        'An error occurred:',
+        error instanceof Error ? error.message : String(error),
+      );
+    }
+  };
+
   return (
     <article className='mb-12!'>
       <div className='mb-4!'>
@@ -62,6 +126,9 @@ export default function ArticleContent({
       <div className='mb-8!'>
         <div className='flex items-center gap-3'>
           <button
+            onClick={() => {
+              updateReaction();
+            }}
             disabled={!isSignedIn}
             className={`${!isSignedIn ? 'cursor-not-allowed' : 'cursor-pointer'} flex items-center gap-2 px-4 py-2 rounded-md border border-gray-300 dark:border-slate-600 text-gray-400 dark:text-gray-500 text-sm font-medium`}
           >
@@ -70,8 +137,8 @@ export default function ArticleContent({
               width='24'
               height='24'
               viewBox='0 0 24 24'
-              fill='none'
-              stroke='currentColor'
+              fill={`${userHasLiked ? 'red' : 'none'}`}
+              stroke={`${userHasLiked ? 'red' : 'currentColor'}`}
               stroke-width='2'
               stroke-linecap='round'
               stroke-linejoin='round'
@@ -80,18 +147,20 @@ export default function ArticleContent({
             >
               <path d='M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5'></path>
             </svg>
-            <span>{post?.likedBy.length}</span>
+            <span>{numberOfLikes}</span>
           </button>
-          <div className='flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400'>
-            <span>Want to like this post!</span>
-            <Link
-              className='text-indigo-600 dark:text-indigo-400 font-medium hover:underline'
-              to='/signin'
-            >
-              {' '}
-              Sign in
-            </Link>
-          </div>
+          {!isSignedIn && (
+            <div className='flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400'>
+              <span>Want to like this post!</span>
+              <Link
+                className='text-indigo-600 dark:text-indigo-400 font-medium hover:underline'
+                to='/signin'
+              >
+                {' '}
+                Sign in
+              </Link>
+            </div>
+          )}
         </div>
       </div>
       <div className='prose dark:prose-invert max-w-none'>

@@ -5,8 +5,6 @@ export default function Footer() {
 
   if (pathname === '/signin' || pathname === '/signup') return null;
 
-  console.log(pathname);
-
   return (
     <footer className='mt-12! border-t! pl-6 flex md:justify-center dark:bg-slate-800 dark:border-slate-700 bg-white border-gray-200 py-6'>
       <div className='max-w-6xl grid md:grid-cols-3 gap-6 pb-6! pt-6'>
