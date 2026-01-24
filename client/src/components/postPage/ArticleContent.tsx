@@ -40,7 +40,7 @@ export default function ArticleContent({
   // Likes or unlike post
   const updateReaction = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/post/${post!.id}`, {
+      await fetch(`http://localhost:5000/post/${post!.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -48,21 +48,15 @@ export default function ArticleContent({
         body: JSON.stringify({ likedBy }),
       });
 
-      const result = await response.json();
-
-      // Api call to fetch post and use it's likes array to get amount of likes
+      // Api call to fetch post and use it's likes array length as
+      // amount of likes
       const res = await fetch(`http://localhost:5000/post/${post!.id}`);
-      const r = await res.json();
+      const result = await res.json();
 
-      // If user likes message set lie state to true and update amount of likes in ui
+      // If user likes message set hasLikedState to true and update amount of likes in ui
       // else do opposite
-      if (result.message === 'liked') {
-        setUserHasLiked(true);
-        setNumberOfLikes(r.results.likes.length);
-      } else {
-        setUserHasLiked(false);
-        setNumberOfLikes(r.results.likes.length);
-      }
+      setUserHasLiked((val) => !val);
+      setNumberOfLikes(result.results.likes.length);
     } catch (error) {
       console.error(
         'An error occurred:',

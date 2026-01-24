@@ -4,6 +4,7 @@ import AboutPage from '../components/aboutPage/AboutPage';
 import Signin from '../components/auth/Signin';
 import ErrorElement from '../components/ErrorComponent';
 import PostPage from '../components/postPage/PostPage';
+import Signup from '../components/auth/Signup';
 
 const routes = [
   {
@@ -22,6 +23,10 @@ const routes = [
       {
         path: 'signin',
         element: <Signin />,
+      },
+      {
+        path: 'signup',
+        element: <Signup />,
       },
       {
         path: `post/:id`,
