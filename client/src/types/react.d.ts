@@ -37,7 +37,7 @@ declare global {
 
 export interface Likes {
   id: number;
-  likedBy: number;
+  likedById: number;
   postId: number;
 }
 
