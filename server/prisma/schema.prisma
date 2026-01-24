@@ -40,10 +40,10 @@ model Post {
 }
 
 model Likes {
-  id        Int   @id @default(autoincrement())
-  user      User  @relation(fields: [likedById], references: [id], onDelete: Cascade)
-  likedById Int[]
-  post      Post  @relation(fields: [postId], references: [id], onDelete: Cascade)
+  id        Int  @id @default(autoincrement())
+  user      User @relation(fields: [likedById], references: [id], onDelete: Cascade)
+  likedById Int
+  post      Post @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId    Int
 }
 
