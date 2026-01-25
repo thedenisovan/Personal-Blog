@@ -14,8 +14,42 @@ export default function Comments({
   const [comments, setComments] = useState<Comment[] | undefined>(
     post?.comments,
   );
-
+  const { user } = useOutletContext<{ user: UserToken }>();
   const updateComments = (data: Comment[]) => setComments(data);
+
+  let token: string;
+
+  if (isSignedIn) {
+    token = JSON.stringify(localStorage.getItem('token'));
+  }
+
+  const deleteComment = async (commentId: number) => {
+    try {
+      await fetch(
+        `http://localhost:5000/post/${postId}/comments/${commentId}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ postId, commentId }),
+        },
+      );
+
+      const response = await fetch(`http://localhost:5000/post/${postId}`);
+
+      if (!response.ok) throw new Error(`Error: ${response.status}`);
+
+      const result = await response.json();
+
+      setComments(result.results.comments);
+    } catch (error) {
+      console.error(`
+          ${error instanceof Error ? error.message : String(error)}
+        `);
+    }
+  };
 
   return (
     <div className='border-t border-gray-200 dark:border-slate-700 pt-12'>
@@ -40,7 +74,7 @@ export default function Comments({
         </h3>
       </div>
 
-      {comments?.length && (
+      {comments?.length !== 0 && (
         <div className='space-y-6! mb-12!'>
           {comments?.map((comment) => (
             <div
@@ -52,13 +86,21 @@ export default function Comments({
                   {comment.authorName[0].toUpperCase()}
                 </div>
                 <div className='flex-1'>
-                  <div className='flex items-center gap-3 mb-2!'>
-                    <span className='font-semibold text-gray-900 dark:text-white'>
-                      {comment.authorName}
-                    </span>
-                    <span className='text-sm text-gray-500 dark:text-gray-400'>
-                      {comment.createdAt.split('T')[0]}
-                    </span>
+                  <div className='flex items-center justify-between'>
+                    <div className='flex items-center gap-3 mb-2!'>
+                      <span className='font-semibold text-gray-900 dark:text-white'>
+                        {comment.authorName}
+                      </span>
+                      <span className='text-sm text-gray-500 dark:text-gray-400'>
+                        {comment.createdAt.split('T')[0]}
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => deleteComment(comment.id)}
+                      className={`${isSignedIn && user.role === 'ADMIN' ? 'inline' : 'hidden'} cursor-pointer hover:text-white text-gray-500 dark:text-gray-400`}
+                    >
+                      X
+                    </button>
                   </div>
                   <p className='text-gray-700 dark:text-gray-300 leading-relaxed'>
                     {comment.content}
@@ -74,6 +116,7 @@ export default function Comments({
         isSignedIn={isSignedIn}
         postId={postId}
         updateComments={updateComments}
+        user={user}
       />
     </div>
   );
@@ -83,14 +126,15 @@ function PostNewComment({
   postId,
   updateComments,
   isSignedIn,
+  user,
 }: {
   postId: string;
   isSignedIn: boolean;
   updateComments: (data: Comment[]) => void;
+  user: UserToken;
 }) {
   const [authorName, setAuthorName] = useState<string>('');
   const [content, setContent] = useState<string>('');
-  const { user } = useOutletContext<{ user: UserToken }>();
 
   // If user is signed in set author name to signed in users username
   useEffect(() => {
