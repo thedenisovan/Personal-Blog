@@ -97,7 +97,7 @@ export default function Comments({
                     </div>
                     <button
                       onClick={() => deleteComment(comment.id)}
-                      className={`${isSignedIn && user.role === 'ADMIN' ? 'inline' : 'hidden'} cursor-pointer hover:text-white text-gray-500 dark:text-gray-400`}
+                      className={`${isSignedIn && user.role === 'ADMIN' ? 'inline' : 'hidden'} hover:text-black cursor-pointer dark:hover:text-white text-gray-500 dark:text-gray-400`}
                     >
                       X
                     </button>
