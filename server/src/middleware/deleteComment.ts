@@ -5,7 +5,7 @@ export default async function deleteComment(req: Request, res: Response) {
   const { postId, commentId } = req.params;
 
   if (!req.token || req.token.role !== 'ADMIN') {
-    return res.sendStatus(401);
+    return res.status(401).json({ message: 'Only admin can delete comments.' });
   }
 
   try {
