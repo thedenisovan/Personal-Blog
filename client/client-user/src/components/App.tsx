@@ -37,6 +37,7 @@ export default function App() {
         isSignedIn={isSignedIn}
         toggleTheme={toggleTheme}
         signoutUser={signoutUser}
+        user={user}
       />
       <Outlet
         context={{
