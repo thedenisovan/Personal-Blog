@@ -2,10 +2,14 @@ import Header from './header/Header';
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router';
 import { jwtDecode } from 'jwt-decode';
+import useFetchPosts from '../../../client-user/src/components/fetchPosts';
 
 export default function App() {
   // Flag to check does current user have access to this page
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const { allPosts, loading, error } = useFetchPosts(
+    'http://localhost:5000/?posts=all',
+  );
 
   const signOutUser = () => {
     setIsAdmin(false);
@@ -26,7 +30,7 @@ export default function App() {
     <>
       <Header signOutUser={signOutUser} isAdmin={isAdmin} />
       <div>
-        <Outlet context={{ isAdmin, setIsAdmin }} />
+        <Outlet context={{ isAdmin, setIsAdmin, allPosts, loading, error }} />
       </div>
     </>
   );
