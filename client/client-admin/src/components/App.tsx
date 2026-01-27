@@ -4,6 +4,7 @@ import { Outlet } from 'react-router';
 import { jwtDecode } from 'jwt-decode';
 
 export default function App() {
+  // Flag to check does current user have access to this page
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   const signOutUser = () => {
@@ -12,6 +13,7 @@ export default function App() {
     localStorage.removeItem('user');
   };
 
+  // On load check user admin privileges
   useEffect(() => {
     const checkStatus = () => {
       checkUserStatus(setIsAdmin, signOutUser);
