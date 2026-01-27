@@ -51,13 +51,21 @@ async function getPostData(req: Request, res: Response) {
   }
 }
 
-async function getAllPublishedPosts(req: Request, res: Response) {
+async function getAllPublishedPosts(
+  req: Request,
+  res: Response,
+  flag: boolean = true,
+) {
   try {
     const publishedPost = await prisma.post.findMany({
       where: {
         published: true,
       },
     });
+    const allPosts = await prisma.post.findMany();
+
+    // If flag is true return only published posts else return all posts
+    let returnedPosts = flag ? publishedPost : allPosts;
 
     if (!publishedPost.length) {
       return res.status(200).json({ message: 'No posts.' });
@@ -66,7 +74,7 @@ async function getAllPublishedPosts(req: Request, res: Response) {
         // Clones published posts and adds category name,
         // author username and date in string format
         const results = await Promise.all(
-          publishedPost.map(async (post) => ({
+          returnedPosts.map(async (post) => ({
             ...post,
 
             categoryName: await prisma.category.findUnique({
