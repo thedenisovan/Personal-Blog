@@ -82,7 +82,7 @@ export default function Header({
           <div className='items-center gap-6 hidden md:flex'>
             {isSignedIn && user!.role === 'ADMIN' && (
               <Link
-                to='http://localhost:5174'
+                to='http://localhost:5174/signin'
                 className='cursor-pointer  hover:bg-slate-700/80 duration-200 shadow-xl bg-black dark:bg-slate-700 flex items-center gap-1 px-3 py-2 rounded-lg'
               >
                 <svg
