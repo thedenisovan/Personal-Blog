@@ -77,6 +77,8 @@ async function getAllPublishedPosts(
           returnedPosts.map(async (post) => ({
             ...post,
 
+            count: await prisma.user.count(),
+
             categoryName: await prisma.category.findUnique({
               where: { id: post.categoryId },
               select: { name: true },
