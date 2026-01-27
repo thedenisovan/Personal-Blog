@@ -2,6 +2,7 @@ import Hero from './Hero';
 import { Navigate } from 'react-router';
 import { useOutletContext } from 'react-router';
 import ErrorElement from '../../../../client-user/src/components/ErrorComponent';
+import AllPosts from './AllPosts';
 
 export default function Dashboard() {
   const { isAdmin, loading, error, allPosts } = useOutletContext<{
@@ -21,7 +22,10 @@ export default function Dashboard() {
       {loading ? (
         <h2 className='text-white'>LOADING</h2>
       ) : (
-        <Hero allPosts={allPosts} />
+        <>
+          <Hero allPosts={allPosts} />
+          <AllPosts allPosts={allPosts} />
+        </>
       )}
     </div>
   );

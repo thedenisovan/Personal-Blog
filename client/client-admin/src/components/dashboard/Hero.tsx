@@ -1,6 +1,6 @@
 export default function Hero({ allPosts }: { allPosts: Post[] }) {
   return (
-    <section className='grid grid-cols-3 max-w-4xl mb-8! gap-6 px-4 py-5 mx-auto!'>
+    <section className='grid grid-cols-3 max-w-6xl mb-8! gap-6 px-4 xl:px-0 py-5 mx-auto!'>
       <HeroCard title={'Total Posts'} n={allPosts.length} />
 
       <HeroCard
