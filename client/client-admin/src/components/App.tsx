@@ -14,7 +14,7 @@ export default function App() {
 
   useEffect(() => {
     const checkStatus = () => {
-      checkUserStatus(setIsAdmin);
+      checkUserStatus(setIsAdmin, signOutUser);
     };
 
     checkStatus();
@@ -30,19 +30,24 @@ export default function App() {
   );
 }
 
-function checkUserStatus(setIsAdmin: (val: boolean) => void) {
+// Signs out user if his token is expired or he is no admin
+function checkUserStatus(
+  setIsAdmin: (val: boolean) => void,
+  signOutUser: () => void,
+) {
   const token = localStorage.getItem('token');
+  // If token exists
   if (token) {
     const decoded = jwtDecode<{ role: string; exp: number }>(token);
+    const currentTime = Date.now() / 1000;
 
-    if (decoded.role !== 'ADMIN') {
-      setIsAdmin(false);
-    } else if (decoded.role === 'ADMIN' && decoded.exp < Date.now()) {
-      setIsAdmin(false);
+    // If user is admin and his token has not expired grant him access
+    if (decoded.role === 'ADMIN' && decoded.exp > currentTime) {
+      setIsAdmin(true);
+    } else {
+      signOutUser();
     }
-
-    setIsAdmin(true);
   } else {
-    setIsAdmin(false);
+    signOutUser();
   }
 }
