@@ -18,9 +18,11 @@ export default function Dashboard() {
     return <Navigate to='signin' />;
   } else if (error) return <ErrorElement />;
   return (
-    <div className='bg-slate-700 h-screen'>
+    <div className='bg-slate-700 min-h-screen'>
       {loading ? (
-        <h2 className='text-white'>LOADING</h2>
+        <div className='h-full'>
+          <h2 className='text-white'>LOADING</h2>
+        </div>
       ) : (
         <>
           <Hero allPosts={allPosts} />

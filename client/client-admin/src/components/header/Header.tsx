@@ -9,8 +9,8 @@ export default function Header({
 }) {
   return (
     <header className='bg-slate-800 h-20 py-5 flex md:block'>
-      <div className='flex items-center max-w-6xl justify-between! lg:px-2! gap-1 mx-auto!'>
-        <div className='flex items-center gap-6 md:px-10 lg:px-0'>
+      <div className='flex items-center max-w-6xl justify-between! px-4 xl:px-0 gap-1 mx-auto!'>
+        <div className='flex items-center gap-6 lg:px-0'>
           <Link
             className='md:text-lg flex items-center gap-3 text-gray-200 border-gray-200 border rounded-lg md:py-1 px-1 md:px-5 hover:bg-slate-700 transition-colors duration-100'
             to={'http://localhost:5173'}
