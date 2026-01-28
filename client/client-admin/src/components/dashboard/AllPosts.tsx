@@ -47,6 +47,29 @@ export default function AllPosts({ allPosts }: { allPosts: Post[] }) {
     }
   };
 
+  // Delete post
+  const deletePost = async (e: FormEvent, postId: number) => {
+    e.preventDefault();
+
+    try {
+      await fetch('http://localhost:5000', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ postId }),
+      });
+
+      // Update local state to trigger re-render
+      setPosts(posts.map((post) => (post.id === postId ? { ...post } : post)));
+    } catch (error) {
+      console.error(`
+          ${error instanceof Error ? error.message : String(error)}
+        `);
+    }
+  };
+
   return (
     <main className='space-y-4! px-4 xl:px-0'>
       {posts.map((post) => (
@@ -104,6 +127,11 @@ export default function AllPosts({ allPosts }: { allPosts: Post[] }) {
               </button>
               {/* Toggle published status post button */}
               <button
+                // If less than 3 published posts disable cant be less
+                disabled={
+                  posts.filter((post) => post.published).length < 3 &&
+                  post.published
+                }
                 onClick={(e) => {
                   togglePost(e, post.id, post.published);
                 }}
@@ -131,6 +159,9 @@ export default function AllPosts({ allPosts }: { allPosts: Post[] }) {
               </button>
               {/* Delete post button */}
               <button
+                // If less than 3 posts disable cant be less
+                disabled={posts.length < 3}
+                onClick={(e) => deletePost(e, post.id)}
                 className='p-2 hover:bg-red-900/20 rounded-md transition-colors'
                 title='Delete'
               >
