@@ -27,6 +27,6 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true
   },
-  "include": ["src/**/*.ts", "prisma/**/*.ts", "src/populate.db.js"],
+  "include": ["src/**/*.ts", "prisma/**/*.ts"],
   "exclude": []
 }

@@ -61,8 +61,14 @@ export default function AllPosts({ allPosts }: { allPosts: Post[] }) {
         body: JSON.stringify({ postId }),
       });
 
+      // Fetch updated posts from db to render state
+      const response = await fetch('http://localhost:5000');
+      if (!response.ok) throw new Error(`Error ${response.status}`);
+
+      const result = await response.json();
+
       // Update local state to trigger re-render
-      setPosts(posts.map((post) => (post.id === postId ? { ...post } : post)));
+      setPosts(result.results);
     } catch (error) {
       console.error(`
           ${error instanceof Error ? error.message : String(error)}
