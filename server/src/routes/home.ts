@@ -1,7 +1,9 @@
 import { Router } from 'express';
 import { getAllPublishedPosts } from '../middleware/postData.js';
 import verifyToken from '../middleware/verifyToken.js';
-import togglePublishedPost from '../middleware/togglePublishedPost';
+import togglePublishedPost, {
+  deletePost,
+} from '../middleware/togglePublishedPost';
 
 const home = Router();
 
@@ -16,5 +18,6 @@ home.get('/', (req, res, next) => {
 });
 home.post('/', verifyToken);
 home.put('/', verifyToken, togglePublishedPost);
+home.delete('/', verifyToken, deletePost);
 
 export default home;
