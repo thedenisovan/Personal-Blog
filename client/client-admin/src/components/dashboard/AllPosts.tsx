@@ -1,8 +1,14 @@
 import { useEffect, useState, type FormEvent } from 'react';
 
-export default function AllPosts({ allPosts }: { allPosts: Post[] }) {
+export default function AllPosts({
+  posts,
+  updatePosts,
+}: {
+  allPosts: Post[];
+  posts: Post[];
+  updatePosts: (posts: Post[]) => void;
+}) {
   const [token, setToken] = useState<string>('');
-  const [posts, setPosts] = useState<Post[]>(allPosts);
 
   // Gets token from local storage and assigns int to state value
   useEffect(() => {
@@ -35,7 +41,7 @@ export default function AllPosts({ allPosts }: { allPosts: Post[] }) {
       });
 
       // Update local state to trigger re-render
-      setPosts(
+      updatePosts(
         posts.map((post) =>
           post.id === postId ? { ...post, published: !post.published } : post,
         ),
@@ -61,14 +67,10 @@ export default function AllPosts({ allPosts }: { allPosts: Post[] }) {
         body: JSON.stringify({ postId }),
       });
 
-      // Fetch updated posts from db to render state
-      const response = await fetch('http://localhost:5000');
-      if (!response.ok) throw new Error(`Error ${response.status}`);
-
-      const result = await response.json();
+      const newPosts = posts.filter((post) => post.id !== postId);
 
       // Update local state to trigger re-render
-      setPosts(result.results);
+      updatePosts(newPosts);
     } catch (error) {
       console.error(`
           ${error instanceof Error ? error.message : String(error)}

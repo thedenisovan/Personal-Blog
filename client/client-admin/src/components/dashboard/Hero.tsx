@@ -1,11 +1,17 @@
-export default function Hero({ allPosts }: { allPosts: Post[] }) {
+export default function Hero({
+  allPosts,
+  posts,
+}: {
+  allPosts: Post[];
+  posts: Post[];
+}) {
   return (
     <section className='grid grid-cols-3 max-w-6xl mb-8! gap-6 px-4 xl:px-0 py-5 mx-auto!'>
-      <HeroCard title={'Total Posts'} n={allPosts.length} />
+      <HeroCard title={'Total Posts'} n={posts.length} />
 
       <HeroCard
         title={'Published'}
-        n={allPosts.filter((post) => post.published).length}
+        n={posts.filter((post) => post.published).length}
       />
 
       <HeroCard title={'Users'} n={allPosts[0].count} />

@@ -5,12 +5,15 @@ import ErrorElement from '../../../../client-user/src/components/ErrorComponent'
 import AllPosts from './AllPosts';
 
 export default function Dashboard() {
-  const { isAdmin, loading, error, allPosts } = useOutletContext<{
-    isAdmin: boolean;
-    loading: boolean;
-    error: string;
-    allPosts: Post[];
-  }>();
+  const { isAdmin, loading, error, allPosts, posts, updatePosts } =
+    useOutletContext<{
+      isAdmin: boolean;
+      loading: boolean;
+      error: string;
+      allPosts: Post[];
+      posts: Post[];
+      updatePosts: (posts: Post[]) => void;
+    }>();
 
   if (!isAdmin) {
     return <Navigate to='signin' />;
@@ -23,8 +26,12 @@ export default function Dashboard() {
         </div>
       ) : (
         <>
-          <Hero allPosts={allPosts} />
-          <AllPosts allPosts={allPosts} />
+          <Hero allPosts={allPosts} posts={posts} />
+          <AllPosts
+            updatePosts={updatePosts}
+            allPosts={allPosts}
+            posts={posts}
+          />
         </>
       )}
     </div>

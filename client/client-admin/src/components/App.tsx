@@ -10,6 +10,9 @@ export default function App() {
   const { allPosts, loading, error } = useFetchPosts(
     'http://localhost:5000/?posts=all',
   );
+  const [posts, setPosts] = useState<Post[]>(
+    Array.isArray(allPosts) ? allPosts : [],
+  );
 
   const signOutUser = () => {
     setIsAdmin(false);
@@ -17,20 +20,37 @@ export default function App() {
     localStorage.removeItem('user');
   };
 
+  const updatePosts = (posts: Post[]) => setPosts(posts);
+
   // On load check user admin privileges
   useEffect(() => {
     const checkStatus = () => {
       checkUserStatus(setIsAdmin, signOutUser);
     };
 
+    const updateAfterFetch = () => {
+      updatePosts(Array.isArray(allPosts) ? allPosts : []);
+    };
+
+    updateAfterFetch();
     checkStatus();
-  });
+  }, [allPosts]);
 
   return (
     <>
       <Header signOutUser={signOutUser} isAdmin={isAdmin} />
       <div>
-        <Outlet context={{ isAdmin, setIsAdmin, allPosts, loading, error }} />
+        <Outlet
+          context={{
+            isAdmin,
+            setIsAdmin,
+            allPosts,
+            loading,
+            error,
+            posts,
+            updatePosts,
+          }}
+        />
       </div>
     </>
   );
