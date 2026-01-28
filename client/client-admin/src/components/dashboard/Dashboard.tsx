@@ -12,8 +12,6 @@ export default function Dashboard() {
     allPosts: Post[];
   }>();
 
-  console.log(allPosts);
-
   if (!isAdmin) {
     return <Navigate to='signin' />;
   } else if (error) return <ErrorElement />;

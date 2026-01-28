@@ -17,10 +17,10 @@ export default function Comments({
   const { user } = useOutletContext<{ user: UserToken }>();
   const updateComments = (data: Comment[]) => setComments(data);
 
-  let token: string;
+  let token: string | null;
 
   if (isSignedIn) {
-    token = JSON.stringify(localStorage.getItem('token'));
+    token = localStorage.getItem('token');
   }
 
   const deleteComment = async (commentId: number) => {

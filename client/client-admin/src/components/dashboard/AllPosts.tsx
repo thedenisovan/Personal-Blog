@@ -1,7 +1,55 @@
+import { useEffect, useState, type FormEvent } from 'react';
+
 export default function AllPosts({ allPosts }: { allPosts: Post[] }) {
+  const [token, setToken] = useState<string>('');
+  const [posts, setPosts] = useState<Post[]>(allPosts);
+
+  // Gets token from local storage and assigns int to state value
+  useEffect(() => {
+    const getToken = () => {
+      const token = localStorage.getItem('token');
+
+      if (!token) setToken('');
+      else setToken(token);
+    };
+
+    getToken();
+  });
+
+  // Toggle post between posted or not
+  const togglePost = async (
+    e: FormEvent,
+    postId: number,
+    published: boolean,
+  ) => {
+    e.preventDefault();
+
+    try {
+      await fetch('http://localhost:5000', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ postId, published }),
+      });
+
+      // Update local state to trigger re-render
+      setPosts(
+        posts.map((post) =>
+          post.id === postId ? { ...post, published: !post.published } : post,
+        ),
+      );
+    } catch (error) {
+      console.error(`
+          ${error instanceof Error ? error.message : String(error)}
+        `);
+    }
+  };
+
   return (
     <main className='space-y-4! px-4 xl:px-0'>
-      {allPosts.map((post) => (
+      {posts.map((post) => (
         <div
           key={post.id}
           className='max-w-6xl mx-auto! bg-slate-800 border hover:bg-slate-800/80 border-slate-700 rounded-lg p-6 hover:border-slate-600 transition-colors'
@@ -56,6 +104,9 @@ export default function AllPosts({ allPosts }: { allPosts: Post[] }) {
               </button>
               {/* Toggle published status post button */}
               <button
+                onClick={(e) => {
+                  togglePost(e, post.id, post.published);
+                }}
                 className='p-2 hover:bg-slate-700 rounded-md transition-colors'
                 title='Unpublish'
               >
