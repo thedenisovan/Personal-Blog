@@ -1,5 +1,5 @@
 import App from '../components/App';
-import ErrorElement from '../../../client-user/src/components/ErrorComponent';
+import ErrorElement from '../ErrorComponent';
 import Dashboard from '../components/dashboard/Dashboard';
 import Signin from '../components/Signin';
 import NewPostForm from '../components/newPost/NewPostForm';

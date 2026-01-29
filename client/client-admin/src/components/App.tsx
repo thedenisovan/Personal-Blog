@@ -2,7 +2,7 @@ import Header from './header/Header';
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router';
 import { jwtDecode } from 'jwt-decode';
-import useFetchPosts from '../../../client-user/src/components/fetchPosts';
+import useFetchPosts from '../fetchPosts';
 
 export default function App() {
   // Flag to check does current user have access to this page

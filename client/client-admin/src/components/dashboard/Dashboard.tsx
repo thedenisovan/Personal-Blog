@@ -1,7 +1,7 @@
 import Hero from './Hero';
 import { Navigate, Link } from 'react-router';
 import { useOutletContext } from 'react-router';
-import ErrorElement from '../../../../client-user/src/components/ErrorComponent';
+import ErrorElement from '../../ErrorComponent';
 import AllPosts from './AllPosts';
 
 export default function Dashboard() {
