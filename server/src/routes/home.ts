@@ -3,7 +3,7 @@ import { getAllPublishedPosts } from '../middleware/postData.js';
 import verifyToken from '../middleware/verifyToken.js';
 import togglePublishedPost, {
   deletePost,
-} from '../middleware/togglePublishedPost';
+} from '../middleware/togglePublishedPost.js';
 
 const home = Router();
 

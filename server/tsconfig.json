@@ -2,7 +2,7 @@
   "compilerOptions": {
     "strict": true,
     "allowJs": true,
-    "module": "ESNext",
+    "module": "NodeNext",
     "lib": ["es2024"],
     "sourceMap": true,
     "skipLibCheck": true,
@@ -17,7 +17,7 @@
     "noFallthroughCasesInSwitch": true,
     "noErrorTruncation": true,
     "declaration": true,
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "target": "ES2023",
     "outDir": "build",
     "rootDir": ".",

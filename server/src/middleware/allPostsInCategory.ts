@@ -2,7 +2,7 @@ import type { Request, Response, NextFunction } from 'express';
 import { prisma } from '../../lib/prisma.js';
 
 export default async function getPostsByCategory(req: Request, res: Response) {
-  const categoryId = parseInt(req.params.categoryId!, 10);
+  const categoryId = Number(req.params.categoryId!);
   if (isNaN(categoryId))
     return res.status(400).json({ message: 'Invalid category ID' });
 

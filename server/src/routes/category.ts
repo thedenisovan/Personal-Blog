@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import getPostsByCategory from '../middleware/allPostsInCategory';
+import getPostsByCategory from '../middleware/allPostsInCategory.js';
 
 const category = Router();
 

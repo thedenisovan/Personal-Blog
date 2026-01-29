@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import { getPostData } from '../middleware/postData';
-import newComment from '../middleware/newComment';
-import verifyToken from '../middleware/verifyToken';
-import deleteComment from '../middleware/deleteComment';
-import updateReaction from '../middleware/updateReaction';
+import { getPostData } from '../middleware/postData.js';
+import newComment from '../middleware/newComment.js';
+import verifyToken from '../middleware/verifyToken.js';
+import deleteComment from '../middleware/deleteComment.js';
+import updateReaction from '../middleware/updateReaction.js';
 
 const post = Router();
 

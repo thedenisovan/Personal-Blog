@@ -3,7 +3,7 @@ import { prisma } from '../../lib/prisma.js';
 
 export default async function newComment(req: Request, res: Response) {
   const { authorName, content } = req.body;
-  const postId = parseInt(req.params.postId!, 10);
+  const postId = Number(req.params.postId!);
 
   try {
     await prisma.comment.create({

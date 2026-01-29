@@ -3,7 +3,7 @@ import { prisma } from '../../lib/prisma.js';
 
 // If post found return it's data based of its id given in params value.
 async function getPostData(req: Request, res: Response) {
-  const postId = parseInt(req.params.postId!, 10);
+  const postId = Number(req.params.postId!);
   // postId should be number
   if (isNaN(postId))
     return res.status(400).json({ message: 'Invalid post ID.' });

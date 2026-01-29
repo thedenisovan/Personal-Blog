@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import verifyToken from '../middleware/verifyToken';
-import newBlogPost from '../middleware/newBlogPost';
+import verifyToken from '../middleware/verifyToken.js';
+import newBlogPost from '../middleware/newBlogPost.js';
 
 const newPost = Router();
 
