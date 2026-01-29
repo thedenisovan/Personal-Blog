@@ -50,12 +50,12 @@ export default function HomePage() {
                   LATEST ARTICLE
                 </h4>
               </div>
-              <Link to={`post/${allPosts[allPosts.length - 1].id}`}>
+              <Link to={`post/${allPosts[0].id}`}>
                 <ArticleCard
-                  category={allPosts[allPosts.length - 1].categoryName.name}
-                  title={allPosts[allPosts.length - 1].title}
-                  description={allPosts[allPosts.length - 1].description}
-                  date={allPosts[allPosts.length - 1].dateString}
+                  category={allPosts[0].categoryName.name}
+                  title={allPosts[0].title}
+                  description={allPosts[0].description}
+                  date={allPosts[0].dateString}
                 />
               </Link>
             </section>
@@ -66,7 +66,7 @@ export default function HomePage() {
               <div className='grid md:grid-cols-2 gap-6'>
                 {allPosts.map(
                   (post, idx) =>
-                    idx < allPosts.length - 1 && (
+                    idx !== 0 && (
                       <Link key={post.id} to={`post/${post.id}`}>
                         <ArticleCard
                           category={post.categoryName.name}
