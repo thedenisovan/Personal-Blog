@@ -4,5 +4,6 @@ import signin from './signin.js';
 import signup from './signup.js';
 import category from './category.js';
 import post from './post.js';
+import newPost from './newPost.js';
 
-export { home, about, signin, signup, category, post };
+export { home, about, signin, signup, category, post, newPost };

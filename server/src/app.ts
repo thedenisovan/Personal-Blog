@@ -7,6 +7,7 @@ import {
   signup,
   category,
   post,
+  newPost,
 } from './routes/routes.js';
 
 const app = express();
@@ -21,6 +22,7 @@ app.use('/signin', signin);
 app.use('/signup', signup);
 app.use('/category', category);
 app.use('/post', post);
+app.use('/newPost', newPost);
 
 app.get('{*splat}', (req, res) => {
   res.sendStatus(404);
