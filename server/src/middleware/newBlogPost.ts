@@ -8,6 +8,8 @@ export default async function newBlogPost(req: Request, res: Response) {
   let newCategory;
   let id;
 
+  // If user entered new category name that means he will post in
+  // new category so use it's id
   try {
     if (categoryName !== '') {
       newCategory = await prisma.category.create({
@@ -15,6 +17,8 @@ export default async function newBlogPost(req: Request, res: Response) {
       });
 
       id = newCategory.id;
+
+      // Else if user enters id post in existing category
     } else {
       id = categoryId;
     }
