@@ -74,7 +74,7 @@ async function getAllPublishedPosts(
         // Clones published posts and adds category name,
         // author username and date in string format
         const results = await Promise.all(
-          returnedPosts.map(async (post) => ({
+          returnedPosts.map(async (post: any) => ({
             ...post,
 
             count: await prisma.user.count(),
