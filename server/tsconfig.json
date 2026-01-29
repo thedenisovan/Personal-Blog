@@ -22,7 +22,6 @@
     "outDir": "build",
     "rootDir": ".",
     "ignoreDeprecations": "5.0",
-    "types": ["node"],
     "moduleDetection": "force",
     "isolatedModules": true,
     "verbatimModuleSyntax": true
