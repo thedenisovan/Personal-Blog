@@ -6,6 +6,10 @@ Full-stack blog platform with **two separate frontends**:
 
 Backend is a **TypeScript + Express** REST API with **JWT auth** and a **PostgreSQL** database via **Prisma**.
 
+## Preview
+
+- **Live site** https://personal-blog-3bi.pages.dev/
+
 ---
 
 ## Tech Stack
