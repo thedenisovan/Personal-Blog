@@ -90,11 +90,11 @@ async function getAllPublishedPosts(
 
         return res.status(200).json({ results });
       } catch {
-        res.sendStatus(500);
+        return res.sendStatus(500);
       }
     }
   } catch {
-    res.sendStatus(500);
+    return res.sendStatus(500);
   }
 }
 

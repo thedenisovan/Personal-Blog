@@ -14,12 +14,12 @@ export default async function newComment(req: Request, res: Response) {
       },
     });
   } catch {
-    res.status(500).json({
+    return res.status(500).json({
       message: 'server error',
     });
   }
 
-  res.status(200).json({
+  return res.status(200).json({
     message: 'posted new comment',
   });
 }

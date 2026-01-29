@@ -17,14 +17,14 @@ export default async function updateReaction(req: Request, res: Response) {
         data: { likedById: likedBy, postId: Number(postId) },
       });
 
-      res.status(200).json({ message: 'liked' });
+      return res.status(200).json({ message: 'liked' });
       // If post have been liked by user and he sends req unlike post
     } else {
       await prisma.likes.deleteMany({
         where: { postId: Number(postId), likedById: likedBy },
       });
 
-      res.status(200).json({ message: 'like deleted' });
+      return res.status(200).json({ message: 'like deleted' });
     }
   } catch (error) {
     console.error(

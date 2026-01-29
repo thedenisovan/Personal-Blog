@@ -17,9 +17,9 @@ export default async function signupUser(
       },
     });
 
-    res.json({ message: 'user created' });
+    return res.json({ message: 'user created' });
   } catch {
-    res.status(500).json({
+    return res.status(500).json({
       message: 'server error',
     });
   }
