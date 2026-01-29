@@ -10,7 +10,7 @@ export default function PostPage() {
   const postId = url[url.length - 1];
 
   const { post, loading } = useFetchPosts(
-    `http://localhost:5000/post/${postId}`,
+    `https://dainis-dilevka.up.railway.app/post/${postId}`,
     false,
   );
   const { isSignedIn } = useOutletContext<{ isSignedIn: boolean }>();

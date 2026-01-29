@@ -40,7 +40,7 @@ export default function ArticleContent({
   // Likes or unlike post
   const updateReaction = async () => {
     try {
-      await fetch(`http://localhost:5000/post/${post!.id}`, {
+      await fetch(`https://dainis-dilevka.up.railway.app/post/${post!.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -50,7 +50,9 @@ export default function ArticleContent({
 
       // Api call to fetch post and use it's likes array length as
       // amount of likes
-      const res = await fetch(`http://localhost:5000/post/${post!.id}`);
+      const res = await fetch(
+        `https://dainis-dilevka.up.railway.app/post/${post!.id}`,
+      );
       const result = await res.json();
 
       // If user likes message set hasLikedState to true and update amount of likes in ui

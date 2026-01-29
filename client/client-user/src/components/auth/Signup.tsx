@@ -12,11 +12,14 @@ export default function Signup() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:5000/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password, passwordConfirmation }),
-      });
+      const response = await fetch(
+        'https://dainis-dilevka.up.railway.app/signup',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password, passwordConfirmation }),
+        },
+      );
 
       if (!response.ok) throw new Error(`Error: ${response.status}`);
       const result = await response.json();
@@ -67,7 +70,7 @@ export default function Signup() {
               Sign In
             </h4>
             <form
-              action='http://localhost:5000/signup'
+              action='https://dainis-dilevka.up.railway.app/signup'
               method='POST'
               className='space-y-6!'
               onSubmit={(e) => signUpUser(e)}

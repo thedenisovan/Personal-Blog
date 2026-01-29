@@ -26,7 +26,7 @@ export default function Comments({
   const deleteComment = async (commentId: number) => {
     try {
       await fetch(
-        `http://localhost:5000/post/${postId}/comments/${commentId}`,
+        `https://dainis-dilevka.up.railway.app/post/${postId}/comments/${commentId}`,
         {
           method: 'DELETE',
           headers: {
@@ -37,7 +37,9 @@ export default function Comments({
         },
       );
 
-      const response = await fetch(`http://localhost:5000/post/${postId}`);
+      const response = await fetch(
+        `https://dainis-dilevka.up.railway.app/post/${postId}`,
+      );
 
       if (!response.ok) throw new Error(`Error: ${response.status}`);
 
@@ -149,13 +151,15 @@ function PostNewComment({
     e.preventDefault();
 
     try {
-      await fetch(`http://localhost:5000/post/${postId}`, {
+      await fetch(`http://dainis-dilevka.up.railway.app/post/${postId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ authorName, content }),
       });
 
-      const res = await fetch(`http://localhost:5000/post/${postId}`);
+      const res = await fetch(
+        `http://dainis-dilevka.up.railway.app/post/${postId}`,
+      );
       const data = await res.json();
 
       updateComments(data.results.comments);
@@ -173,7 +177,7 @@ function PostNewComment({
         Leave a comment
       </h4>
       <form
-        action={`http://localhost:5000/post/${postId}`}
+        action={`http://dainis-dilevka.up.railway.app/post/${postId}`}
         method='post'
         className='space-y-4'
         onSubmit={(e) => postNewComment(e)}

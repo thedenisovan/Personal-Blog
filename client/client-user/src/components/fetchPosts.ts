@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export default function useFetchPosts(
-  url: string = 'http://localhost:5000/',
+  url: string = 'https://dainis-dilevka.up.railway.app',
   multiple: boolean = true,
 ) {
   const [allPosts, setAllPosts] = useState<Post[] | Post>([]);
