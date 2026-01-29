@@ -46,21 +46,24 @@ export default function NewPostForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:5000/newPost', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+      const response = await fetch(
+        'https://dainis-dilevka.up.railway.app/newPost',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            authorId,
+            title,
+            categoryId,
+            categoryName,
+            content,
+            description,
+          }),
         },
-        body: JSON.stringify({
-          authorId,
-          title,
-          categoryId,
-          categoryName,
-          content,
-          description,
-        }),
-      });
+      );
 
       if (!response.ok) throw new Error(`Error ${response.status}`);
 

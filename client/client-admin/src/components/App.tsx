@@ -8,7 +8,7 @@ export default function App() {
   // Flag to check does current user have access to this page
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const { allPosts, loading, error } = useFetchPosts(
-    'http://localhost:5000/?posts=all',
+    'https://dainis-dilevka.up.railway.app/?posts=all',
   );
   const [posts, setPosts] = useState<Post[]>(
     Array.isArray(allPosts) ? allPosts : [],

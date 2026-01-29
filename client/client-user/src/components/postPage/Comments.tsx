@@ -151,14 +151,14 @@ function PostNewComment({
     e.preventDefault();
 
     try {
-      await fetch(`http://dainis-dilevka.up.railway.app/post/${postId}`, {
+      await fetch(`https://dainis-dilevka.up.railway.app/post/${postId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ authorName, content }),
       });
 
       const res = await fetch(
-        `http://dainis-dilevka.up.railway.app/post/${postId}`,
+        `https://dainis-dilevka.up.railway.app/post/${postId}`,
       );
       const data = await res.json();
 
@@ -177,7 +177,7 @@ function PostNewComment({
         Leave a comment
       </h4>
       <form
-        action={`http://dainis-dilevka.up.railway.app/post/${postId}`}
+        action={`https://dainis-dilevka.up.railway.app/post/${postId}`}
         method='post'
         className='space-y-4'
         onSubmit={(e) => postNewComment(e)}

@@ -32,7 +32,7 @@ export default function AllPosts({
 
     // Publish unpublish post
     try {
-      await fetch('http://localhost:5000', {
+      await fetch('https://dainis-dilevka.up.railway.app', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ export default function AllPosts({
     e.preventDefault();
 
     try {
-      await fetch('http://localhost:5000', {
+      await fetch('https://dainis-dilevka.up.railway.app', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

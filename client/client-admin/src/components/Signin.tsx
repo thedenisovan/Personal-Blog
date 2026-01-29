@@ -18,11 +18,14 @@ export default function Signin() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:5000/signin', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
-      });
+      const response = await fetch(
+        'https://dainis-dilevka.up.railway.app/signin',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password }),
+        },
+      );
 
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
@@ -79,7 +82,7 @@ export default function Signin() {
           <div className='bg-slate-800 rounded-xl p-8 shadow-lg border h-110 border-slate-700'>
             <h4 className='text-3xl font-medium text-white mb-6!'>Sign In</h4>
             <form
-              action='http://localhost:5000/signin'
+              action='https://dainis-dilevka.up.railway.app/signin'
               method='POST'
               className='space-y-6!'
               onSubmit={(e) => signInUser(e)}
