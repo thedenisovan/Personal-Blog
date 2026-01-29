@@ -88,7 +88,7 @@ export default function Drawer({
               </svg>
               <Link
                 onClick={() => toggleDrawer()}
-                to='http://localhost:5174/signin'
+                to='https://c1d0824e.personal-blog-admin.pages.dev/signin'
               >
                 <p className='font-medium text-xl'>Admin</p>
               </Link>
