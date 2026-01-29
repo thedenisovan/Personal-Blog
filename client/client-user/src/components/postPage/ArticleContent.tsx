@@ -158,9 +158,14 @@ export default function ArticleContent({
         </div>
       </div>
       <div className='prose dark:prose-invert max-w-none'>
-        <p className='text-gray-700 dark:text-gray-300 mb-6 leading-relaxed text-lg xl:text-xl'>
-          {post?.content}
-        </p>
+        {post?.content.split('\\').map((c) => (
+          <>
+            <p className='text-gray-700 dark:text-gray-300 mb-6 leading-relaxed text-lg xl:text-xl'>
+              {c}
+            </p>
+            <br />
+          </>
+        ))}
       </div>
     </article>
   );
