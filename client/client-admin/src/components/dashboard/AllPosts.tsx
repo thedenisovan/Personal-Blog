@@ -30,6 +30,7 @@ export default function AllPosts({
   ) => {
     e.preventDefault();
 
+    // Publish unpublish post
     try {
       await fetch('http://localhost:5000', {
         method: 'PUT',
@@ -83,7 +84,7 @@ export default function AllPosts({
       {posts.map((post) => (
         <div
           key={post.id}
-          className='max-w-6xl mx-auto! bg-slate-800 border hover:bg-slate-800/80 border-slate-700 rounded-lg p-6 hover:border-slate-600 transition-colors'
+          className='max-w-6xl mx-auto! shadow-2xl bg-slate-800 border hover:bg-slate-800/80 border-slate-700 rounded-lg p-6 hover:border-slate-600 transition-colors'
         >
           <div className='flex items-start justify-between gap-6'>
             <div className='flex-1'>
