@@ -8,7 +8,7 @@ Backend is a **TypeScript + Express** REST API with **JWT auth** and a **Postgre
 
 ## Preview
 
-- **Live site** https://personal-blog-3bi.pages.dev/
+- **Live demo** https://personal-blog-3bi.pages.dev/
 
 ---
 
