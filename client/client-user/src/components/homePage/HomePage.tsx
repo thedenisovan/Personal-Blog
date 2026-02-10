@@ -50,12 +50,12 @@ export default function HomePage() {
                   LATEST ARTICLE
                 </h4>
               </div>
-              <Link to={`post/${allPosts[0].id}`}>
+              <Link to={`post/${allPosts[allPosts.length - 1].id}`}>
                 <ArticleCard
-                  category={allPosts[0].categoryName.name}
-                  title={allPosts[0].title}
-                  description={allPosts[0].description}
-                  date={allPosts[0].dateString}
+                  category={allPosts[allPosts.length - 1].categoryName.name}
+                  title={allPosts[allPosts.length - 1].title}
+                  description={allPosts[allPosts.length - 1].description}
+                  date={allPosts[allPosts.length - 1].dateString}
                 />
               </Link>
             </section>
