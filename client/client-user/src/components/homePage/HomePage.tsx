@@ -66,7 +66,7 @@ export default function HomePage() {
               <div className='grid md:grid-cols-2 gap-6'>
                 {allPosts.map(
                   (post, idx) =>
-                    idx !== 0 && (
+                    idx !== allPosts.length - 1 && (
                       <Link key={post.id} to={`post/${post.id}`}>
                         <ArticleCard
                           category={post.categoryName.name}
